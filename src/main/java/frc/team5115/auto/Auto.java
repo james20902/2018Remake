@@ -13,11 +13,11 @@ public class Auto extends StateMachineBase{
     public static final int TEST = 1;
 
     //define auto routines
-    public static test test;
+    public static SwitchRoutine switchauto;
 
     public Auto() {
         //instantiate auto routines
-        test = new test();
+        switchauto = new SwitchRoutine();
     }
 
     //each time update is called in AutoDrive
@@ -25,11 +25,11 @@ public class Auto extends StateMachineBase{
         //Run switch block and check for number
         switch (state) {
             case INIT:
-                test.setState(test.INIT);
+                switchauto.setState(switchauto.INIT);
                 break;
 
             case TEST:
-                test.update();
+                switchauto.update();
                 break;
         }
     }

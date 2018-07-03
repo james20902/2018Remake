@@ -3,10 +3,7 @@ package frc.team5115.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team5115.auto.Auto;
-import frc.team5115.auto.AutoDrive;
-import frc.team5115.auto.ObjectivePositions;
-import frc.team5115.auto.TrajectoryGenerator;
+import frc.team5115.auto.*;
 import frc.team5115.statemachines.Drive;
 import frc.team5115.systems.DriveTrain;
 
@@ -17,6 +14,7 @@ public class Robot extends TimedRobot {
     public static DriveTrain drivetrain;
     public static Drive drive;
     public static TrajectoryGenerator tg;
+    public static TrajectoryWriter tw;
     public static ObjectivePositions OP;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
@@ -26,6 +24,7 @@ public class Robot extends TimedRobot {
         drivetrain = new DriveTrain();
         drive = new Drive();
         tg = new TrajectoryGenerator();
+        tw = new TrajectoryWriter();
 
     }
 

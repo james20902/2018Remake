@@ -55,10 +55,6 @@ public class AutoDrive extends StateMachineBase {
                 left.configurePIDVA(1.5, 0.0, 0, 1 / 4.3, 0);
                 right.configurePIDVA(1.5, 0.0, 0, 1 / 4.3, 0);
 
-                drivetrain.resetGyro();
-
-                left.reset();
-                right.reset();
                 break;
         }
 
@@ -93,6 +89,9 @@ public class AutoDrive extends StateMachineBase {
                     System.out.println("heyyyy it finished");
                     drivetrain.drive(0, 0);
                     drivetrain.resetEncoders();
+                    drivetrain.resetGyro();
+                    left.reset();
+                    right.reset();
                     setState(FINISHED);
                 }
 

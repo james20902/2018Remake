@@ -23,6 +23,7 @@ public class Constants {
     // Physical robot attributes (these typically shouldn't exceed 1)
     public static final double TOP_SPEED = 1;
     public static final double TOP_TURN_SPEED = 0.75;
+    public static final double WHEELBASE = 0.6096;
 
     //CAN motors
     public static final int FRONT_LEFT_MOTOR_ID = 3;

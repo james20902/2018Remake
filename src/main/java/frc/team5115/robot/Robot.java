@@ -5,7 +5,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team5115.auto.*;
 import frc.team5115.statemachines.Drive;
+import frc.team5115.systems.Carriage;
 import frc.team5115.systems.DriveTrain;
+import frc.team5115.systems.Elevator;
+import frc.team5115.systems.Intake;
 
 public class Robot extends TimedRobot {
 
@@ -16,6 +19,9 @@ public class Robot extends TimedRobot {
     public static TrajectoryGenerator tg;
     public static TrajectoryWriter tw;
     public static ObjectivePositions OP;
+    public static Intake intake;
+    public static Carriage carriage;
+    public static Elevator elevator;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
 

@@ -9,7 +9,16 @@ public class Constants {
     public static final int JOYSTICK_EXPO = 2;
 
     //Actual Button Binds
+    public static final int UP = 4;
+    public static final int DOWN = 2;
+    public static final int INTAKE = 9;
+    public static final int EJECT = 1;
 
+    //PID
+    public static final double DELAY = 0.005;
+    public static final double ARM_KP = 0.015;
+    public static final double ARM_KI = 0;
+    public static final double ARM_KD = 0.02;
 
     //Speed and Delay parameters
     public static final double ELEVATOR_SPEED_SCALE = 1;
@@ -19,11 +28,17 @@ public class Constants {
     public static final int POT_THRESHOLD = 900;
     public static final int ELEVATOR_MAX = 817;
     public static final int ELEVATOR_MIN = 0;
+    public static final int ELEVATOR_STEP = 100;
 
     // Physical robot attributes (these typically shouldn't exceed 1)
     public static final double TOP_SPEED = 1;
     public static final double TOP_TURN_SPEED = 0.75;
     public static final double WHEELBASE = 0.6096;
+    // DIFFERENT BETWEEN ROBOTS - DO NOT COPY
+    public static final double RETURN_HEIGHT = 0;
+    public static final double INTAKE_HEIGHT = 160;
+    public static final double SWITCH_HEIGHT = 250;
+    public static final double SCALE_HEIGHT = 720;
 
     //CAN motors
     public static final int FRONT_LEFT_MOTOR_ID = 3;

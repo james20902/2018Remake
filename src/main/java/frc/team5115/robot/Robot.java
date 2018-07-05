@@ -2,10 +2,11 @@ package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team5115.auto.*;
+import frc.team5115.statemachines.CubeManipulator;
 import frc.team5115.statemachines.Drive;
-import frc.team5115.systems.Carriage;
+import frc.team5115.statemachines.ElevatorManager;
+import frc.team5115.systems.Grip;
 import frc.team5115.systems.DriveTrain;
 import frc.team5115.systems.Elevator;
 import frc.team5115.systems.Intake;
@@ -20,8 +21,10 @@ public class Robot extends TimedRobot {
     public static TrajectoryWriter tw;
     public static ObjectivePositions OP;
     public static Intake intake;
-    public static Carriage carriage;
+    public static Grip grip;
     public static Elevator elevator;
+    public static ElevatorManager EM;
+    public static CubeManipulator CM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
 
@@ -31,6 +34,13 @@ public class Robot extends TimedRobot {
         drive = new Drive();
         tg = new TrajectoryGenerator();
         tw = new TrajectoryWriter();
+        intake = new Intake();
+        grip = new Grip();
+        elevator = new Elevator();
+        //IM = new IntakeManager();
+        //GM = new GripManager();
+        //EM = new ElevatorManager();
+        CM = new CubeManipulator();
 
     }
 
@@ -55,9 +65,11 @@ public class Robot extends TimedRobot {
 
         //now set it to accept controller input
         drive.setState(Drive.DRIVING);
+        CM.setState(CM.INPUT);
     }
     public void autonomousPeriodic(){
         auto.update();
+        CM.update();
     }
     public void teleopPeriodic() {
         drive.update();

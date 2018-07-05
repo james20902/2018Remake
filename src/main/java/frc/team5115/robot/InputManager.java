@@ -51,6 +51,33 @@ public class InputManager {
         return val;
     }
 
+    public static boolean switchHeight(){
+        return getHat() == 270 || getHat() == 90;
+    }
+    public static boolean scaleHeight(){
+        return getHat() == 0;
+    }
+
+    public static boolean returnHeight(){
+        return getHat() == 180;
+    }
+
+    public static boolean intake(){
+        return joy.getRawButton(Constants.INTAKE);
+    }
+
+    public static boolean eject(){
+        return joy.getRawButton(Constants.EJECT);
+    }
+
+    public static boolean moveUp(){
+        return joy.getRawButton(Constants.UP);
+    }
+
+    public static boolean moveDown(){
+        return joy.getRawButton(Constants.DOWN);
+    }
+
     //joy.getRawButton will check if the assigned button from joystick object is being pressed, and returns t/f
     /*public static boolean kill(){
         return joy.getRawButton(Constants.KILL);

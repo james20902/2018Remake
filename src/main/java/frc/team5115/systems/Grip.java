@@ -8,11 +8,11 @@ package frc.team5115.systems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.team5115.Constants;
 
-public class Carriage {
+public class Grip {
     DoubleSolenoid grabberSolenoid;
 
 
-    public Carriage(){
+    public Grip(){
         grabberSolenoid = new DoubleSolenoid(Constants.PHEUMATIC_PCM_1_ID, Constants.CARRIAGE_FORWARD_CHANNEL, Constants.CARRIAGE_REVERSE_CHANNEL);
     }
 

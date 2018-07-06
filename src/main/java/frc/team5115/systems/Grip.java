@@ -19,7 +19,7 @@ public class Grip {
     public void grab(){
         grabberSolenoid.set(DoubleSolenoid.Value.kForward);
     }
-    public void eject(){
+    public void release(){
         grabberSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     public void stop(){

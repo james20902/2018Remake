@@ -6,6 +6,7 @@ import frc.team5115.auto.*;
 import frc.team5115.statemachines.CubeManipulator;
 import frc.team5115.statemachines.Drive;
 import frc.team5115.statemachines.ElevatorManager;
+import frc.team5115.statemachines.IntakeManager;
 import frc.team5115.systems.Grip;
 import frc.team5115.systems.DriveTrain;
 import frc.team5115.systems.Elevator;
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static ElevatorManager EM;
     public static CubeManipulator CM;
+    public static IntakeManager IM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
 
@@ -37,8 +39,7 @@ public class Robot extends TimedRobot {
         intake = new Intake();
         grip = new Grip();
         elevator = new Elevator();
-        //IM = new IntakeManager();
-        //GM = new GripManager();
+        IM = new IntakeManager();
         //EM = new ElevatorManager();
         CM = new CubeManipulator();
 

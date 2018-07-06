@@ -16,6 +16,10 @@ public class CubeManipulator extends StateMachineBase {
 
     public double armGoal = Robot.elevator.getAngle();
 
+    protected void updateChildren(){
+        Robot.EM.update();
+    }
+
     public void update(){
         switch (state){
             case STOP:
@@ -45,14 +49,17 @@ public class CubeManipulator extends StateMachineBase {
                 break;
             case ARMUP:
                 Robot.EM.setTarget(armGoal);
+                updateChildren();
                 if(InputManager.moveUp()) {
                     armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
                 } else {
                     setState(INPUT);
                 }
+
                 break;
             case ARMDOWN:
                 Robot.EM.setTarget(armGoal);
+                updateChildren();
                 if(InputManager.moveUp()) {
                     armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
                 } else {
@@ -62,16 +69,19 @@ public class CubeManipulator extends StateMachineBase {
             case ARMSWITCH:
                 armGoal = Constants.SWITCH_HEIGHT;
                 Robot.EM.setTarget(armGoal);
+                updateChildren();
                 setState(INPUT);
                 break;
             case ARMSCALE:
                 armGoal = Constants.SCALE_HEIGHT;
                 Robot.EM.setTarget(armGoal);
+                updateChildren();
                 setState(INPUT);
                 break;
             case ARMHOME:
                 armGoal = Constants.RETURN_HEIGHT;
                 Robot.EM.setTarget(armGoal);
+                updateChildren();
                 setState(INPUT);
                 break;
         }

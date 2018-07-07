@@ -65,6 +65,7 @@ public class Robot extends TimedRobot {
         //now set it to accept controller input
         drive.setState(Drive.DRIVING);
         CM.setState(CubeManipulator.INPUT);
+        EM.setState(ElevatorManager.MOVING);
     }
     public void autonomousPeriodic(){
         auto.update();
@@ -74,5 +75,15 @@ public class Robot extends TimedRobot {
         CM.update();
     }
 
+    public void disabledInit() {
+        CM.setState(CubeManipulator.STOP);
+    }
+
+
+    public void disabledPeriodic() {
+        drivetrain.drive(0,0);
+        EM.setState(CubeManipulator.STOP);
+        IM.setState(IntakeManager.STOP);
+    }
 
 }

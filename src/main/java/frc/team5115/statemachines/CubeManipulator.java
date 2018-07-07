@@ -1,5 +1,6 @@
 package frc.team5115.statemachines;
 
+import edu.wpi.first.wpilibj.Timer;
 import frc.team5115.Constants;
 import frc.team5115.robot.InputManager;
 import frc.team5115.robot.Robot;
@@ -13,6 +14,8 @@ public class CubeManipulator extends StateMachineBase {
     public static final int ARMSCALE = 5;
     public static final int ARMHOME = 6;
     public static final int INTAKE = 7;
+    public static final int DROP = 8;
+    public static final int RELEASE = 9;
 
     public double armGoal = Robot.elevator.getAngle();
 
@@ -51,13 +54,23 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.intake()){
                     setState(INTAKE);
                 }
+
+                if (InputManager.eject()){
+                    setState(DROP);
+                }
                 break;
             case ARMUP:
+                //set current target, to be reassigned later if button is being held
                 Robot.EM.setTarget(armGoal);
+
+                //move the arm (execute move case)
                 Robot.EM.update();
+                //every autonomous loop, check if the button is being held down
                 if(InputManager.moveUp()) {
+                    //if it is, add to the target
                     armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
                 } else {
+                    //if its not during any autonomous cycle, give back input options
                     setState(INPUT);
                 }
 
@@ -75,7 +88,6 @@ public class CubeManipulator extends StateMachineBase {
                 armGoal = Constants.SWITCH_HEIGHT;
                 Robot.EM.setTarget(armGoal);
                 Robot.EM.update();
-
                 setState(INPUT);
                 break;
             case ARMSCALE:
@@ -94,11 +106,25 @@ public class CubeManipulator extends StateMachineBase {
                 Robot.IM.update();
                 if (InputManager.intake()){
                     Robot.IM.setState(IntakeManager.INTAKE);
-                } else if (!InputManager.intake() && Robot.intake.isCube()){
+                } else if (!InputManager.intake() && Robot.elevator.minHeight()){
+                    Robot.IM.setState(IntakeManager.PASS);
+                    Robot.IM.update();
+                    Timer.delay(1);
+                    Robot.grip.grip();
+                    setState(INPUT);
+                } else {
                     Robot.IM.setState(IntakeManager.PASS);
                     Robot.IM.update();
                     setState(INPUT);
                 }
+                break;
+            case DROP:
+                Robot.IM.setState(IntakeManager.DROP);
+                Robot.IM.update();
+                setState(INPUT);
+                break;
+            case RELEASE:
+                Robot.grip.release();
                 break;
         }
     }

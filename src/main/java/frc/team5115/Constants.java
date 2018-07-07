@@ -12,7 +12,8 @@ public class Constants {
     public static final int UP = 4;
     public static final int DOWN = 2;
     public static final int INTAKE = 9;
-    public static final int EJECT = 1;
+    public static final int DROP = 10;
+    public static final int RELEASEGRIP = 1;
 
     //PID
     public static final double DELAY = 0.005;

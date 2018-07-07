@@ -3,7 +3,7 @@ package frc.team5115.statemachines;
 import frc.team5115.Constants;
 import frc.team5115.robot.Robot;
 
-public class ElevatorManager extends StateMachineBase{
+public class ElevatorManager extends StateMachineBase {
 
     public static final int MOVING = 1;
 
@@ -26,9 +26,9 @@ public class ElevatorManager extends StateMachineBase{
         }
     }
 
-    public double calculate(double setpoint, double reading, double dReading){
+    public double calculate(double setpoint, double reading, double dReading) {
         error = setpoint - reading;
-        dError = -dReading;		// result of taking the derivative of the equation above with respect to time
+        dError = -dReading;        // result of taking the derivative of the equation above with respect to time
 
         output = Constants.ARM_KP * error + Constants.ARM_KI * errorAccum + Constants.ARM_KD * dError;
 
@@ -45,11 +45,11 @@ public class ElevatorManager extends StateMachineBase{
         return output;
     }
 
-    public void update(){
+    public void update() {
         angle = Robot.elevator.getAngle();
         dAngle = Robot.elevator.getAngleSpeed();
 
-        switch(state){
+        switch (state) {
             case STOP:
                 Robot.elevator.move(0);
                 break;

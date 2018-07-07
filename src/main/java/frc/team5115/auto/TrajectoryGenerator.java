@@ -5,8 +5,6 @@ import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Waypoint;
 
-import java.io.File;
-
 public class TrajectoryGenerator {
 
     Waypoint[] CL, CR, LL, RR, LR, RL;

@@ -1,6 +1,5 @@
 package frc.team5115.auto;
 
-import frc.team5115.robot.Robot;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 

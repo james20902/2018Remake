@@ -4,7 +4,6 @@ import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.StateMachineBase;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
-import jaci.pathfinder.Waypoint;
 
 public class SwitchRoutine extends StateMachineBase {
 
@@ -29,12 +28,12 @@ public class SwitchRoutine extends StateMachineBase {
             case INIT:
                 //logic is as follows
                 //if our objective(the switch) is on the left
-                if (Robot.OP.switchpos == 'L'){
+                if (ObjectivePositions.switchpos == 'L'){
                     //check if we're lining up with the switch
                     if (Robot.OP.switchOurs()){
                         //if we are, set our follower to follow LL
                         target = Pathfinder.readFromFile(Robot.tw.LL);
-                    } else if (Robot.OP.start == 'C'){
+                    } else if (ObjectivePositions.start == 'C'){
                         //if not, check if we're in the center, and set our follower to follow centerL
                         target = Pathfinder.readFromFile(Robot.tw.CL);
                     } else {
@@ -42,10 +41,10 @@ public class SwitchRoutine extends StateMachineBase {
                         target = Pathfinder.readFromFile(Robot.tw.LR);
                     }
                     //this is the exact same thing, but for the right
-                } else if(Robot.OP.switchpos == 'R'){
+                } else if(ObjectivePositions.switchpos == 'R'){
                     if (Robot.OP.switchOurs()){
                         target = Pathfinder.readFromFile(Robot.tw.RR);
-                    } else if (Robot.OP.start == 'C'){
+                    } else if (ObjectivePositions.start == 'C'){
                         target = Pathfinder.readFromFile(Robot.tw.CR);
                     } else {
                         target = Pathfinder.readFromFile(Robot.tw.RL);

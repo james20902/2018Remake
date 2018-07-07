@@ -16,7 +16,7 @@ public class Grip {
         grabberSolenoid = new DoubleSolenoid(Constants.PHEUMATIC_PCM_1_ID, Constants.CARRIAGE_FORWARD_CHANNEL, Constants.CARRIAGE_REVERSE_CHANNEL);
     }
 
-    public void grab(){
+    public void grip(){
         grabberSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     public void release(){

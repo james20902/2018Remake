@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
         grip = new Grip();
         elevator = new Elevator();
         IM = new IntakeManager();
-        //EM = new ElevatorManager();
+        EM = new ElevatorManager();
         CM = new CubeManipulator();
 
     }
@@ -49,10 +49,8 @@ public class Robot extends TimedRobot {
         drivetrain.inuse = false;
         drivetrain.drive(0,0);
         drivetrain.resetEncoders();
-
-        //OP = new ObjectivePositions((char)positionChooser.getSelected());
-
-        //System.out.println((int)strategyChooser.getSelected());
+        OP = new ObjectivePositions((char)positionChooser.getSelected());
+        System.out.println((int)strategyChooser.getSelected());
         auto = new Auto();
         auto.setState(Auto.INIT);
     }
@@ -66,14 +64,14 @@ public class Robot extends TimedRobot {
 
         //now set it to accept controller input
         drive.setState(Drive.DRIVING);
-        CM.setState(CM.INPUT);
+        CM.setState(CubeManipulator.INPUT);
     }
     public void autonomousPeriodic(){
         auto.update();
-        CM.update();
     }
     public void teleopPeriodic() {
         drive.update();
+        CM.update();
     }
 
 

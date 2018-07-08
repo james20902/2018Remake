@@ -6,13 +6,16 @@ public class Auto extends StateMachineBase{
 
     public static final int INIT = 0;
     private static final int SWITCHSINGLE = 1;
+    public static final int SCALESINGLE = 2;
 
     //define auto routines
-    private static SwitchRoutine switchauto;
+    public static SwitchSingle switchsingle;
+    public static ScaleSingle scalesingle;
 
     public Auto() {
         //instantiate auto routines
-        switchauto = new SwitchRoutine();
+        switchsingle = new SwitchSingle();
+        scalesingle = new ScaleSingle();
     }
 
     //each time update is called in AutoDrive
@@ -20,11 +23,15 @@ public class Auto extends StateMachineBase{
         //Run switch block and check for number
         switch (state) {
             case INIT:
-                switchauto.setState(SwitchRoutine.INIT);
+                switchsingle.setState(SwitchSingle.INIT);
                 break;
 
             case SWITCHSINGLE:
-                switchauto.update();
+                switchsingle.update();
+                break;
+
+            case SCALESINGLE:
+
                 break;
         }
     }

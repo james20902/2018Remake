@@ -33,7 +33,7 @@ public class TrajectoryGenerator {
                 new Waypoint(2, 0.8, 0),
                 new Waypoint(4.46, 0.8, 0),
                 new Waypoint(5.22, 1.9, Pathfinder.d2r(90))
-        };
+    };
         LR = new Waypoint[]{
                 new Waypoint(0.482, 6.5, 0),
                 new Waypoint(4, 2.5, 0)

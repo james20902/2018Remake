@@ -67,7 +67,7 @@ public class InputManager {
     }
 
     public static boolean eject(){
-        return joy.getRawButton(Constants.EJECT);
+        return joy.getRawButton(Constants.RELEASEGRIP);
     }
 
     public static boolean moveUp(){

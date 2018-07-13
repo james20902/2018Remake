@@ -34,8 +34,13 @@ public class Robot extends TimedRobot {
         //instantiate
         drivetrain = new DriveTrain();
         drive = new Drive();
+        /*
         tg = new TrajectoryGenerator();
         tw = new TrajectoryWriter();
+        these two are to only be instantiated ONCE
+        unless you are changing a trajectory
+        instantiating these objects will
+        */
         intake = new Intake();
         grip = new Grip();
         elevator = new Elevator();
@@ -84,6 +89,7 @@ public class Robot extends TimedRobot {
         drivetrain.drive(0,0);
         EM.setState(CubeManipulator.STOP);
         IM.setState(IntakeManager.STOP);
+        grip.stop();
     }
 
 }

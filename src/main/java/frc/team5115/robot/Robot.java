@@ -3,14 +3,9 @@ package frc.team5115.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.team5115.auto.*;
-import frc.team5115.statemachines.CubeManipulator;
-import frc.team5115.statemachines.Drive;
-import frc.team5115.statemachines.ElevatorManager;
-import frc.team5115.statemachines.IntakeManager;
-import frc.team5115.systems.Grip;
-import frc.team5115.systems.DriveTrain;
-import frc.team5115.systems.Elevator;
-import frc.team5115.systems.Intake;
+import frc.team5115.statemachines.*;
+import frc.team5115.systems.*;
+
 
 public class Robot extends TimedRobot {
 
@@ -34,13 +29,8 @@ public class Robot extends TimedRobot {
         //instantiate
         drivetrain = new DriveTrain();
         drive = new Drive();
-        /*
-        tg = new TrajectoryGenerator();
-        tw = new TrajectoryWriter();
-        these two are to only be instantiated ONCE
-        unless you are changing a trajectory
-        instantiating these objects will
-        */
+        //tg = new TrajectoryGenerator();
+        //tw = new TrajectoryWriter();
         intake = new Intake();
         grip = new Grip();
         elevator = new Elevator();
@@ -78,6 +68,7 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
         drive.update();
         CM.update();
+        System.out.println("holy shit its enabled!!!");
     }
 
     public void disabledInit() {
@@ -90,6 +81,7 @@ public class Robot extends TimedRobot {
         EM.setState(CubeManipulator.STOP);
         IM.setState(IntakeManager.STOP);
         grip.stop();
+
     }
 
 }

@@ -31,6 +31,9 @@ public class InputManager {
 
     public static double getThrottle() {
         // Joystick give 1 to -1 but we need 0 to 1
+        //by subtracting 1 for every value the throttle gets and dividing by two we can accomplish this
+        //ex: (1 - (-1) = 2) / 2 = 1
+        //ex: (1 - 1 = 0) / 2 = 0
         return (1 - joy.getRawAxis(Constants.AXIS_THROTTLE)) / 2;
     }
 

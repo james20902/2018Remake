@@ -32,7 +32,7 @@ public class ElevatorManager extends StateMachineBase {
 
         output = Constants.ARM_KP * error + Constants.ARM_KI * errorAccum + Constants.ARM_KD * dError;
 
-        // Do not integrate if the output exceeds max to avoid intergral windup. See youtu.be/fusr9eTceEo
+        // Do not integrate if the output exceeds max to avoid integral windup. See youtu.be/fusr9eTceEo
         if (Math.abs(output) <= Constants.ELEVATOR_SPEED_SCALE) {
             errorAccum += error * Constants.DELAY;
         }

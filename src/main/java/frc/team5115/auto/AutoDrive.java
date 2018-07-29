@@ -78,7 +78,6 @@ public class AutoDrive extends StateMachineBase {
             case FINISHED:
                 Robot.drivetrain.inuse = false;
                 Robot.drivetrain.resetEncoders();
-                Robot.drivetrain.resetGyro();
                 left.reset();
                 right.reset();
                 break;

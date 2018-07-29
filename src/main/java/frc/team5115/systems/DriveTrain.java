@@ -19,9 +19,6 @@ public class DriveTrain {
     //define gyroscope object
     AHRS navx;
 
-    //grabbing our direction for encoder data
-    public int direction;
-
     public DriveTrain(){
         //instantiate the things
         navx = new AHRS(SPI.Port.kMXP);
@@ -37,9 +34,6 @@ public class DriveTrain {
         //assign encoder data to back left and back right motors respectively
         backright.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 5);
         backleft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 5);
-
-        //define final direction
-        direction = 1;
 
     }
 

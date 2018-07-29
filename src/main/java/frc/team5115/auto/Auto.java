@@ -5,7 +5,7 @@ import frc.team5115.statemachines.StateMachineBase;
 public class Auto extends StateMachineBase{
 
     public static final int INIT = 0;
-    private static final int SWITCHSINGLE = 1;
+    public static final int SWITCHSINGLE = 1;
     public static final int SCALESINGLE = 2;
 
     //define auto routines
@@ -24,6 +24,7 @@ public class Auto extends StateMachineBase{
         switch (state) {
             case INIT:
                 switchsingle.setState(SwitchSingle.INIT);
+                setState(SWITCHSINGLE);
                 break;
 
             case SWITCHSINGLE:
@@ -31,7 +32,7 @@ public class Auto extends StateMachineBase{
                 break;
 
             case SCALESINGLE:
-
+                scalesingle.update();
                 break;
         }
     }

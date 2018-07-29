@@ -24,6 +24,16 @@ public class CubeManipulator extends StateMachineBase {
         Robot.IM.update();
     }
 
+    public void collisionAvoidance() {
+        if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
+            Robot.IM.setState(IntakeManager.PASS);
+        } else if ((Robot.elevator.getAngle() <= Constants.INTAKE_HEIGHT)) {
+            Robot.IM.setState(IntakeManager.OPEN);
+        } else {
+            Robot.IM.setState(IntakeManager.CLOSE);
+        }
+    }
+
     public void update(){
         switch (state){
             case STOP:
@@ -60,6 +70,7 @@ public class CubeManipulator extends StateMachineBase {
                 }
                 break;
             case ARMUP:
+                collisionAvoidance();
                 //set current target, to be reassigned later if button is being held
                 Robot.EM.setTarget(armGoal);
 
@@ -70,12 +81,13 @@ public class CubeManipulator extends StateMachineBase {
                     //if it is, add to the target
                     armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
                 } else {
-                    //if its not during any autonomous cycle, give back input options
+                    //if its not, give back input options
                     setState(INPUT);
                 }
 
                 break;
             case ARMDOWN:
+                collisionAvoidance();
                 Robot.EM.setTarget(armGoal);
                 Robot.EM.update();
                 if(InputManager.moveUp()) {
@@ -85,18 +97,21 @@ public class CubeManipulator extends StateMachineBase {
                 }
                 break;
             case ARMSWITCH:
+                collisionAvoidance();
                 armGoal = Constants.SWITCH_HEIGHT;
                 Robot.EM.setTarget(armGoal);
                 Robot.EM.update();
                 setState(INPUT);
                 break;
             case ARMSCALE:
+                collisionAvoidance();
                 armGoal = Constants.SCALE_HEIGHT;
                 Robot.EM.setTarget(armGoal);
                 Robot.EM.update();
                 setState(INPUT);
                 break;
             case ARMHOME:
+                collisionAvoidance();
                 armGoal = Constants.RETURN_HEIGHT;
                 Robot.EM.setTarget(armGoal);
                 Robot.EM.update();

@@ -19,10 +19,10 @@ public class Intake {
 	public Intake(){
 		cubeDetectorL = new DigitalInput(Constants.CUBE_DETECTOR_L);
 		cubeDetectorR = new DigitalInput(Constants.CUBE_DETECTOR_R);
-		cubeSolenoidLeft = new DoubleSolenoid(Constants.PHEUMATIC_PCM_0_ID, Constants.INTAKE_FORWARD_CHANNEL_LEFT, Constants.INTAKE_REVERSE_CHANNEL_LEFT);
-		cubeSolenoidRight = new DoubleSolenoid(Constants.PHEUMATIC_PCM_0_ID, Constants.INTAKE_FORWARD_CHANNEL_RIGHT, Constants.INTAKE_REVERSE_CHANNEL_RIGHT);
-		intakeLifterLeft = new DoubleSolenoid(Constants.PHEUMATIC_PCM_0_ID, Constants.LIFTER_FORWARD_CHANNEL_LEFT, Constants.LIFTER_REVERSE_CHANNEL_LEFT);
-		intakeLifterRight = new DoubleSolenoid(Constants.PHEUMATIC_PCM_0_ID, Constants.LIFTER_FORWARD_CHANNEL_RIGHT, Constants.LIFTER_REVERSE_CHANNEL_RIGHT);
+		cubeSolenoidLeft = new DoubleSolenoid(Constants.PNEUMATIC_PCM_0_ID, Constants.INTAKE_FORWARD_CHANNEL_LEFT, Constants.INTAKE_REVERSE_CHANNEL_LEFT);
+		cubeSolenoidRight = new DoubleSolenoid(Constants.PNEUMATIC_PCM_0_ID, Constants.INTAKE_FORWARD_CHANNEL_RIGHT, Constants.INTAKE_REVERSE_CHANNEL_RIGHT);
+		intakeLifterLeft = new DoubleSolenoid(Constants.PNEUMATIC_PCM_0_ID, Constants.LIFTER_FORWARD_CHANNEL_LEFT, Constants.LIFTER_REVERSE_CHANNEL_LEFT);
+		intakeLifterRight = new DoubleSolenoid(Constants.PNEUMATIC_PCM_0_ID, Constants.LIFTER_FORWARD_CHANNEL_RIGHT, Constants.LIFTER_REVERSE_CHANNEL_RIGHT);
 		intakeWheelsLeft = new Spark(Constants.INTAKE_SPARK_LEFT);
 		intakeWheelsRight = new Spark(Constants.INTAKE_SPARK_RIGHT);
 	}

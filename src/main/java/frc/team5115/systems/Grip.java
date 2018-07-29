@@ -13,7 +13,7 @@ public class Grip {
 
 
     public Grip(){
-        grabberSolenoid = new DoubleSolenoid(Constants.PHEUMATIC_PCM_1_ID, Constants.CARRIAGE_FORWARD_CHANNEL, Constants.CARRIAGE_REVERSE_CHANNEL);
+        grabberSolenoid = new DoubleSolenoid(Constants.PNEUMATIC_PCM_1_ID, Constants.CARRIAGE_FORWARD_CHANNEL, Constants.CARRIAGE_REVERSE_CHANNEL);
     }
 
     public void grip(){

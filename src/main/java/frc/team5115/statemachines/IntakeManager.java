@@ -10,6 +10,8 @@ public class IntakeManager extends StateMachineBase {
     public static final int PASS = 2;
     public static final int PASSNOWHEELS = 3;
     public static final int DROP = 4;
+    public static final int OPEN = 5;
+    public static final int CLOSE = 6;
 
     public void update(){
         switch(state){
@@ -39,6 +41,13 @@ public class IntakeManager extends StateMachineBase {
                 Timer.delay(0.5);
                 Robot.intake.release();
                 break;
+            case OPEN:
+                Robot.intake.release();
+                break;
+            case CLOSE:
+                Robot.intake.grip();
+                break;
+
 
 
         }

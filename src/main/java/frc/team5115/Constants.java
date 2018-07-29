@@ -47,8 +47,8 @@ public class Constants {
     public static final int FRONT_RIGHT_MOTOR_ID = 4;
     public static final int BACK_LEFT_MOTOR_ID = 1;
     public static final int BACK_RIGHT_MOTOR_ID = 2;
-    public static final int PHEUMATIC_PCM_0_ID = 7;
-    public static final int PHEUMATIC_PCM_1_ID = 8;
+    public static final int PNEUMATIC_PCM_0_ID = 7;
+    public static final int PNEUMATIC_PCM_1_ID = 8;
     public static final int ELEVATORMOVER = 5;
 
     //PWM

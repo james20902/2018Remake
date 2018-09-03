@@ -23,11 +23,13 @@ public class Auto extends StateMachineBase{
         //Run switch block and check for number
         switch (state) {
             case INIT:
+                //for testing purposes, we just wanna test switch auto
                 switchsingle.setState(SwitchSingle.INIT);
                 setState(SWITCHSINGLE);
                 break;
 
             case SWITCHSINGLE:
+                //loop the current state of switch single
                 switchsingle.update();
                 break;
 

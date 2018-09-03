@@ -16,6 +16,7 @@ public class ElevatorManager extends StateMachineBase {
     double dAngle;
     double angle;
 
+    //just some checks to make sure the arm doesnt go lower or higher than possible
     public void setTarget(double target) {
         if (target > Constants.ELEVATOR_MAX) {
             targetAngle = Constants.ELEVATOR_MAX;
@@ -55,6 +56,21 @@ public class ElevatorManager extends StateMachineBase {
                 break;
 
             case MOVING:
+                //if the elevator is at the lowest possible height, and isnt moving
+                if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
+                    //keep the intake up
+                    Robot.IM.setState(IntakeManager.PASS);
+                    //if the arm is at a height less than or equal to the intake height (so when the arm is about
+                    //to hit the intake
+                } else if ((Robot.elevator.getAngle() <= Constants.INTAKE_HEIGHT)) {
+                    //open and let the arm through
+                    Robot.IM.setState(IntakeManager.OPEN);
+                    //otherwise
+                } else {
+                    //assume the arm is past the point of collision and remain closed
+                    Robot.IM.setState(IntakeManager.CLOSE);
+                }
+                //then move the arm and calculate how far it needs to move
                 Robot.elevator.move(calculate(targetAngle, angle, dAngle));
                 break;
         }

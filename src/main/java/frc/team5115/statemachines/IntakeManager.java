@@ -13,6 +13,7 @@ public class IntakeManager extends StateMachineBase {
     public static final int OPEN = 5;
     public static final int CLOSE = 6;
 
+
     public void update(){
         switch(state){
             case STOP:

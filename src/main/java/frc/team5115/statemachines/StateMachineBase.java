@@ -16,5 +16,4 @@ public class StateMachineBase {
     public void setState(int s) {
         state = s;
     }
-
 }

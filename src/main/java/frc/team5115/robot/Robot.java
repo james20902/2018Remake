@@ -41,42 +41,44 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
+        //When the autonomous starts,
+        //we will assume the robot just turned on, and will say the drivetrain is currently not in use
         drivetrain.inuse = false;
         drivetrain.drive(0,0);
         drivetrain.resetEncoders();
         OP = new ObjectivePositions((char)positionChooser.getSelected());
         System.out.println((int)strategyChooser.getSelected());
         auto = new Auto();
+        //we set our auto file to set all of our possible strategies to init
         auto.setState(Auto.INIT);
     }
 
     public void teleopInit() {
-        //execute
-        //first, reset EVERYTHING
+        //assume the robot just turned on, and the drivetrain is not in use
         drivetrain.inuse = false;
         drivetrain.drive(0,0);
         drivetrain.resetEncoders();
 
-        //now set it to accept controller input
+        //allow our drivetrain and subsystems to accept controller input
         drive.setState(Drive.DRIVING);
-        CM.setState(CubeManipulator.INPUT);
+        CM.setState(CubeManipulator.ARMUP);
         EM.setState(ElevatorManager.MOVING);
     }
-    public void autonomousPeriodic(){
-        auto.update();
-    }
+    public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); }
     public void teleopPeriodic() {
+        //collect input every 5ms
         drive.update();
         CM.update();
-        System.out.println("holy shit its enabled!!!");
     }
 
     public void disabledInit() {
+        //stop accepting input
         CM.setState(CubeManipulator.STOP);
     }
 
 
     public void disabledPeriodic() {
+        //keep everything stopped for good measure
         drivetrain.drive(0,0);
         EM.setState(CubeManipulator.STOP);
         IM.setState(IntakeManager.STOP);

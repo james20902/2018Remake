@@ -56,29 +56,38 @@ public class SwitchSingle extends StateMachineBase {
                         target = Pathfinder.readFromFile(Robot.tw.RL);
                     }
                 }
+                //set our autodriver to follow the path file
                 drive = new AutoDrive(target);
                 drive.setState(AutoDrive.DRIVING);
+                //allow the elevator to move, queue keeping the arm up, and grip
                 Robot.EM.setState(ElevatorManager.MOVING);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 Robot.grip.grip();
+                //set our target to the switch height
+                Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
+                //loop driving
                 setState(DRIVING);
                 break;
 
             //when in case driving
             case DRIVING:
-                Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
+                //tell the elevator to move to target, bring the arm up, and keep following the path
                 updateChildren();
+                //when we're done following the path, go to drop cube
                 if(drive.state == AutoDrive.FINISHED){
                     setState(DROPCUBE);
                 }
                 break;
             case DROPCUBE:
+                //wait for a few seconds and make sure we arent moving
                 Timer.delay(0.5);
+                //let go of the cube
                 Robot.grip.release();
                 setState(FINISHED);
                 break;
 
             case FINISHED:
+                //stop everything
                 Robot.EM.setState(ElevatorManager.STOP);
                 Robot.drivetrain.drive(0,0);
                 break;

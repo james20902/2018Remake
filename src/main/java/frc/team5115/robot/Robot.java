@@ -2,6 +2,7 @@ package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team5115.auto.*;
 import frc.team5115.statemachines.*;
 import frc.team5115.systems.*;
@@ -13,8 +14,6 @@ public class Robot extends TimedRobot {
     public static Auto auto;
     public static DriveTrain drivetrain;
     public static Drive drive;
-    public static TrajectoryGenerator tg;
-    public static TrajectoryWriter tw;
     public static ObjectivePositions OP;
     public static Intake intake;
     public static Grip grip;
@@ -29,8 +28,6 @@ public class Robot extends TimedRobot {
         //instantiate
         drivetrain = new DriveTrain();
         drive = new Drive();
-        //tg = new TrajectoryGenerator();
-        //tw = new TrajectoryWriter();
         intake = new Intake();
         grip = new Grip();
         elevator = new Elevator();
@@ -38,20 +35,25 @@ public class Robot extends TimedRobot {
         EM = new ElevatorManager();
         CM = new CubeManipulator();
 
+        positionChooser = new SendableChooser();
+        positionChooser.addDefault("Left", 'L');
+        positionChooser.addObject("Right", 'R');
+        positionChooser.addObject("Center", 'C');
+        SmartDashboard.putData("Strategy", strategyChooser);
+
+        strategyChooser = new SendableChooser();
+        strategyChooser.addDefault("Switch", 1);
+        SmartDashboard.putData("Position", positionChooser);
+
     }
 
     public void autonomousInit(){
-        //When the autonomous starts,
-        //we will assume the robot just turned on, and will say the drivetrain is currently not in use
-        drivetrain.inuse = false;
-        drivetrain.drive(0,0);
+        drivetrain.resetGyro();
         drivetrain.resetEncoders();
         OP = new ObjectivePositions((char)positionChooser.getSelected());
-        System.out.println((int)strategyChooser.getSelected());
-        auto = new Auto();
-        //we set our auto file to set all of our possible strategies to init
-        auto.setState(Auto.INIT);
+        auto = new Auto((int)strategyChooser.getSelected());
     }
+
 
     public void teleopInit() {
         //assume the robot just turned on, and the drivetrain is not in use
@@ -61,10 +63,10 @@ public class Robot extends TimedRobot {
 
         //allow our drivetrain and subsystems to accept controller input
         drive.setState(Drive.DRIVING);
-        CM.setState(CubeManipulator.ARMUP);
+        CM.setState(CubeManipulator.INPUT);
         EM.setState(ElevatorManager.MOVING);
     }
-    public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); }
+    public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); System.out.println("autoing"); }
     public void teleopPeriodic() {
         //collect input every 5ms
         drive.update();

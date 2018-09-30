@@ -30,6 +30,9 @@ public class CubeManipulator extends StateMachineBase {
                 Robot.elevator.move(0);
                 break;
             case INPUT:
+                if (Robot.elevator.minHeight()) {
+                    Robot.IM.setState(IntakeManager.PASS);
+                }
                 //always return back to this state, check if any button is being pressed. if it is, act accordingly
                 if ((InputManager.moveUp()) && !Robot.elevator.maxHeight()){
                     setState(ARMUP);

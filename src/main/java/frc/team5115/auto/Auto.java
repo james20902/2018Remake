@@ -4,18 +4,29 @@ import frc.team5115.statemachines.StateMachineBase;
 
 public class Auto extends StateMachineBase{
 
+    int whatitdo;
+
     public static final int INIT = 0;
-    public static final int SWITCHSINGLE = 1;
-    public static final int SCALESINGLE = 2;
+    public static final int SWITCH = 1;
+
+    public static Switch switchstrategy;
+
 
     //define auto routines
-    public static SwitchSingle switchsingle;
-    public static ScaleSingle scalesingle;
 
-    public Auto() {
-        //instantiate auto routines
-        switchsingle = new SwitchSingle();
-        scalesingle = new ScaleSingle();
+
+    public Auto(int Strategy) {
+        whatitdo = Strategy;
+        switchstrategy = new Switch();
+    }
+
+    public void setState(int s) {
+        switch (s) {
+            case INIT:
+                switchstrategy.setState(switchstrategy.INIT);
+
+        }
+        super.setState(s);
     }
 
     //each time update is called in AutoDrive
@@ -23,19 +34,10 @@ public class Auto extends StateMachineBase{
         //Run switch block and check for number
         switch (state) {
             case INIT:
-                //for testing purposes, we just wanna test switch auto
-                switchsingle.setState(SwitchSingle.INIT);
-                setState(SWITCHSINGLE);
-                break;
-
-            case SWITCHSINGLE:
-                //loop the current state of switch single
-                switchsingle.update();
-                break;
-
-            case SCALESINGLE:
-                scalesingle.update();
-                break;
+                setState(whatitdo);
+            case SWITCH:
+                System.out.println("Updating switch");
+                switchstrategy.update();
         }
     }
 }

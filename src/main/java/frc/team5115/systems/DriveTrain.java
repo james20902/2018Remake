@@ -19,6 +19,8 @@ public class DriveTrain {
     //define gyroscope object
     AHRS navx;
 
+    public int direction;
+
     public DriveTrain(){
         //instantiate the things
         navx = new AHRS(SPI.Port.kMXP);
@@ -52,23 +54,41 @@ public class DriveTrain {
         backleft.set(ControlMode.PercentOutput, -leftspeed);
         backright.set(ControlMode.PercentOutput, rightspeed);
     }
-    public void leftFollow(double left, double turn){
-        double leftspeed = left + turn;
-        backleft.set(ControlMode.PercentOutput, -leftspeed);
-    }
-    public void rightFollow(double right, double turn){
-        double rightspeed = right - turn;
-        backright.set(ControlMode.PercentOutput, rightspeed);
+    public double leftDist() {
+        double leftDist = -direction * backleft.getSelectedSensorPosition(0);
+        return leftDist / 1440 * 6 * Math.PI / 12;
     }
 
-    public int leftDistRaw(){
-        return -backleft.getSelectedSensorPosition(0);
+    public double rightDist() {
+        System.out.println(backright.getSelectedSensorPosition(0));
+        double rightDist = direction * backright.getSelectedSensorPosition(0);
+        return rightDist / 1440 * 6 * Math.PI / 12;
     }
-    public int rightDistRaw(){
-        return backright.getSelectedSensorPosition(0);
+
+    public double distanceTraveled() {
+        return (rightDist() + leftDist()) / 2;
+    }
+
+    public double leftSpeed() {
+        double leftspeed = -backleft.getSelectedSensorVelocity(0);
+        return ((leftspeed * 6 * Math.PI * 10) / (1440 * 12));
+
+    }
+
+    public double rightSpeed() {
+        double rightspeed = backright.getSelectedSensorVelocity(0);
+        return ((rightspeed * 6 * Math.PI * 10) / (1440 * 12));
+    }
+
+
+    public double averageSpeed() {
+        return (leftSpeed() + rightSpeed()) / 2;
     }
     public double getYaw() {
         return navx.getYaw();
+    }
+    public double getTurnVelocity(){
+        return navx.getRate();
     }
     public void resetEncoders() {
         backleft.setSelectedSensorPosition(0, 0, 5); //5 ms

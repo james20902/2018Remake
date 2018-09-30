@@ -16,10 +16,32 @@ public class Constants {
     public static final int RELEASEGRIP = 1;
 
     //PID
-    public static final double DELAY = 0.005;
+    public static final double AUTO_FORWARD_KP = 0.4;
+    public static final double AUTO_FORWARD_KI = 0;
+    public static final double AUTO_FORWARD_KD = 0.1;
+    public static final double AUTO_LINE_KP = 0.125;
+    public static final double AUTO_LINE_KI = 0;
+    public static final double AUTO_LINE_KD = 0;
+    public static final double AUTO_TURN_KP = 0.06;
+    public static final double AUTO_TURN_KI = 0;
+    public static final double AUTO_TURN_KD = 0.05;
+    public static final double FORWARD_KF = 0;
+    public static final double TURN_KF = 0;
+    public static final double TURN_KP = 0.3;
+    public static final double TURN_KI = 0.15;
     public static final double ARM_KP = 0.015;
     public static final double ARM_KI = 0;
     public static final double ARM_KD = 0.02;
+    public static final double DELAY = 0.005;
+    // Tolerances for PID
+    public static final double LINE_TOLERANCE = 0.25;
+    public static final double LINE_DTOLERANCE = 0.25;
+    public static final double FORWARD_TOLERANCE = 0.25;
+    public static final double FORWARD_DTOLERANCE = 0.05;
+    public static final double TURN_TOLERANCE = 5;
+    public static final double TURN_DTOLERANCE = 15;
+    public static final double ARM_TOLERANCE = 5;
+    public static final double ARM_DTOLERANCE = 5;
 
     //Speed and Delay parameters
     public static final double ELEVATOR_SPEED_SCALE = 1;
@@ -28,16 +50,16 @@ public class Constants {
     public static final double ELEVATOR_SPEED = 0.75;
     public static final int POT_THRESHOLD = 900;
     public static final int ELEVATOR_MAX = 817;
-    public static final int ELEVATOR_MIN = 0;
+    public static final int ELEVATOR_MIN = 73;
     public static final int ELEVATOR_STEP = 100;
     public static final double INTAKE_SPEED = 0.65;
 
     // Physical robot attributes (these typically shouldn't exceed 1)
     public static final double TOP_SPEED = 1;
     public static final double TOP_TURN_SPEED = 0.75;
-    public static final double WHEELBASE = 0.6096;
+
     // DIFFERENT BETWEEN ROBOTS - DO NOT COPY
-    public static final double RETURN_HEIGHT = 0;
+    public static final double RETURN_HEIGHT = 73;
     public static final double INTAKE_HEIGHT = 160;
     public static final double SWITCH_HEIGHT = 250;
     public static final double SCALE_HEIGHT = 720;

@@ -1,75 +1,74 @@
 package frc.team5115.auto;
 
 import frc.team5115.Constants;
+import frc.team5115.PID;
 import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.StateMachineBase;
 
-import jaci.pathfinder.Trajectory;
-import jaci.pathfinder.followers.EncoderFollower;
-import jaci.pathfinder.modifiers.TankModifier;
-
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoDrive extends StateMachineBase {
-
-    public static GyroCalculate gyro;
 
     public static final int DRIVING = 1;
     public static final int FINISHED = 2;
 
+    // used to determine if we're running a line or a turn
+    // only comes into play in situations where you need to single out a specific controller
+    boolean line;
 
+    double targetDist;
+    double targetAngle;
 
-    //define our trajectory
-    Trajectory trajectory;
-    //define our encoders
-    EncoderFollower left;
-    EncoderFollower right;
-    //define our modifier
-    TankModifier modifier;
+    PID forwardController;
+    PID turnController;
 
+    public void startLine(double dist, double maxSpeed) {
+        line = true;
+        //Takes some time to reset gyros + encoders
+        Timer.delay(0.1);
+        targetDist = Robot.drivetrain.distanceTraveled() + dist;
+        targetAngle = Robot.drivetrain.getYaw();
 
-    public AutoDrive(Trajectory target){
-        //gyrocalculationator
-        gyro = new GyroCalculate();
-        //assign our trajectory
-        trajectory = target;
-        //assign our modifier with our new trajectory
-        modifier = new TankModifier(trajectory).modify(Constants.WHEELBASE);
-        //instantiate our left and right encoder followers with our modifier
-        left = new EncoderFollower(modifier.getLeftTrajectory());
-        right = new EncoderFollower(modifier.getRightTrajectory());
-    }
-    public void updateTarget(Trajectory target){
-        trajectory = target;
-        modifier = new TankModifier(trajectory).modify(Constants.WHEELBASE);
-        left = new EncoderFollower(modifier.getLeftTrajectory());
-        right = new EncoderFollower(modifier.getRightTrajectory());
+        forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD ,maxSpeed);
+        turnController = new PID(Constants.AUTO_TURN_KP, Constants.AUTO_TURN_KI ,Constants.AUTO_TURN_KD);
+
+        setState(DRIVING);
     }
 
-    public void setState(int s) {
-        switch (s) {
-            case DRIVING:
-                //configure the encoder data to follow the trajectory
-                left.configureEncoder(Robot.drivetrain.leftDistRaw(), 1440, 0.1524);
-                right.configureEncoder(Robot.drivetrain.rightDistRaw(), 1440, 0.1524);
-                //configure PID variables for encoders
-                left.configurePIDVA(1.5, 0.0, 0, 1 / 4.3, 0);
-                right.configurePIDVA(1.5, 0.0, 0, 1 / 4.3, 0);
-                break;
-        }
-        super.setState(s);
+    public void startTurn(double angle, double maxSpeed) {
+        line = false;
+        targetDist = Robot.drivetrain.distanceTraveled();
+        targetAngle = Robot.drivetrain.getYaw() + (angle);
+
+        forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD);
+        turnController = new PID(Constants.TURN_KP, Constants.TURN_KI ,Constants.AUTO_TURN_KD, maxSpeed);
+
+        setState(DRIVING);
     }
 
     public void update() {
-
+        SmartDashboard.putNumber("autodrive state: ", state);
+        System.out.println("autodrive target: " + targetDist);
         switch (state) {
             case DRIVING:
                 Robot.drivetrain.inuse = true;
 
-                Robot.drivetrain.leftFollow(left.calculate(Robot.drivetrain.leftDistRaw()), gyro.calculate(left));
-                Robot.drivetrain.rightFollow(left.calculate(Robot.drivetrain.leftDistRaw()), gyro.calculate(right));
+                // run every Constants.getAsDouble()DELAY seconds while driving
+                double vForward = forwardController.getPID(targetDist, Robot.drivetrain.distanceTraveled(), Robot.drivetrain.averageSpeed());
 
-                if (left.isFinished() && right.isFinished()) {
-                    System.out.println("heyyyy it finished");
+                double clearYaw = clearSteer(Robot.drivetrain.getYaw(), targetAngle);
+                double vTurn = turnController.getPID(targetAngle, clearYaw, Robot.drivetrain.getTurnVelocity());
+
+                if (!line && Math.abs(turnController.getError()) > 4 * Constants.TURN_TOLERANCE) {
+                    vTurn += 0.15 * Math.signum(vTurn);
+                }
+
+                // tell the drivetrain to do the stuff
+                Robot.drivetrain.drive(vForward, vTurn);
+
+                // if both controllers are finished, finish
+                if (forwardController.isFinished(Constants.FORWARD_TOLERANCE, Constants.FORWARD_DTOLERANCE) && turnController.isFinished(Constants.TURN_TOLERANCE, Constants.TURN_DTOLERANCE)) {
                     Robot.drivetrain.drive(0, 0);
                     setState(FINISHED);
                 }
@@ -77,13 +76,24 @@ public class AutoDrive extends StateMachineBase {
                 break;
             case FINISHED:
                 Robot.drivetrain.inuse = false;
-                Robot.drivetrain.resetEncoders();
-                left.reset();
-                right.reset();
+                Robot.drivetrain.drive(0, 0);
+
+                forwardController = null;
+                turnController = null;
                 break;
         }
     }
 
+    private double clearSteer(double yaw, double target) {
+        if (Math.abs(target - yaw) > 180) {
+            if (target < 180) {
+                yaw -= 360;
+            } else {
+                yaw += 360;
+            }
+        }
+
+        return yaw;
+    }
 
 }
-

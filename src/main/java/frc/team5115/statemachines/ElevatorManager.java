@@ -1,6 +1,7 @@
 package frc.team5115.statemachines;
 
 import frc.team5115.Constants;
+import frc.team5115.PID;
 import frc.team5115.robot.Robot;
 
 public class ElevatorManager extends StateMachineBase {
@@ -15,6 +16,14 @@ public class ElevatorManager extends StateMachineBase {
     double targetAngle;
     double dAngle;
     double angle;
+    PID elevatorMover;
+    public ElevatorManager(){
+        elevatorMover = new PID( Constants.ARM_KP,	//readability!
+                Constants.ARM_KI,	//because this line was too thicc
+                Constants.ARM_KD,
+                Constants.ELEVATOR_SPEED_SCALE);
+    }
+
 
     //just some checks to make sure the arm doesnt go lower or higher than possible
     public void setTarget(double target) {
@@ -71,7 +80,7 @@ public class ElevatorManager extends StateMachineBase {
                     Robot.IM.setState(IntakeManager.CLOSE);
                 }
                 //then move the arm and calculate how far it needs to move
-                Robot.elevator.move(calculate(targetAngle, angle, dAngle));
+                Robot.elevator.move(elevatorMover.getPID(targetAngle, angle, dAngle));
                 break;
         }
     }

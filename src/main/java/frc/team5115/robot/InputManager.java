@@ -81,6 +81,10 @@ public class InputManager {
         return joy.getRawButton(Constants.DOWN);
     }
 
+    public static boolean toggleDash(){return joy.getRawButton(Constants.SWITCHMODES);}
+
+    public static boolean partyTime(){return joy.getRawButton(Constants.PARTYTIME);}
+
     //joy.getRawButton will check if the assigned button from joystick object is being pressed, and returns t/f
     /*public static boolean kill(){
         return joy.getRawButton(Constants.KILL);

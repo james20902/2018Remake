@@ -36,23 +36,14 @@ public class ElevatorManager extends StateMachineBase {
         }
     }
 
-    public double calculate(double setpoint, double reading, double dReading) {
-        error = setpoint - reading;
-        dError = -dReading;        // result of taking the derivative of the equation above with respect to time
 
-        output = Constants.ARM_KP * error + Constants.ARM_KI * errorAccum + Constants.ARM_KD * dError;
+    public void setState(int s) {
+        switch (s) {
+            case MOVING:
+                //set the speed to use our user set arm speed value somehow
 
-        // Do not integrate if the output exceeds max to avoid integral windup. See youtu.be/fusr9eTceEo
-        if (Math.abs(output) <= Constants.ELEVATOR_SPEED_SCALE) {
-            errorAccum += error * Constants.DELAY;
         }
-
-        // Do not return a value greater than the maximum, but make sure it's the right sign
-        if (Math.abs(output) > Constants.ELEVATOR_SPEED_SCALE) {
-            output = Constants.ELEVATOR_SPEED_SCALE * Math.signum(output);
-        }
-
-        return output;
+        super.setState(s);
     }
 
     public void update() {

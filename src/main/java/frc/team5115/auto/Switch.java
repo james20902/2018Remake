@@ -13,11 +13,11 @@ public class Switch extends StateMachineBase {
 
     public static final int INIT = 0;
     public static final int DRIVING = 1;
-    public static final int TURNING = 91;
-    public static final int DRIVEAGAIN = 92;
-    public static final int CENTERISNTDONEYET = 93;
-    public static final int STILLISNTDONEYET = 94;
-    public static final int FINISHED = 95;
+    public static final int TURNING = 2;
+    public static final int DRIVEAGAIN = 3;
+    public static final int CENTERISNTDONEYET = 4;
+    public static final int STILLISNTDONEYET = 5;
+    public static final int FINISHED = 6;
 
     double time;
     boolean center = Robot.OP.isCenter();

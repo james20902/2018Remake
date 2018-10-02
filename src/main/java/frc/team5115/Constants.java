@@ -14,6 +14,8 @@ public class Constants {
     public static final int INTAKE = 9;
     public static final int DROP = 10;
     public static final int RELEASEGRIP = 1;
+    public static final int SWITCHMODES = 12;
+    public static final int PARTYTIME = 5;
 
     //PID
     public static final double AUTO_FORWARD_KP = 0.4;

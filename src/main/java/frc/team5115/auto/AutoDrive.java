@@ -69,7 +69,6 @@ public class AutoDrive extends StateMachineBase {
 
                 // if both controllers are finished, finish
                 if (forwardController.isFinished(Constants.FORWARD_TOLERANCE, Constants.FORWARD_DTOLERANCE) && turnController.isFinished(Constants.TURN_TOLERANCE, Constants.TURN_DTOLERANCE)) {
-                    Robot.drivetrain.drive(0, 0);
                     setState(FINISHED);
                 }
 

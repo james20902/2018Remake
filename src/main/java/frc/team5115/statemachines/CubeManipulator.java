@@ -1,6 +1,8 @@
 package frc.team5115.statemachines;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.hal.HAL;
 import frc.team5115.Constants;
 import frc.team5115.robot.InputManager;
 import frc.team5115.robot.Robot;
@@ -16,8 +18,13 @@ public class CubeManipulator extends StateMachineBase {
     public static final int INTAKE = 7;
     public static final int DROP = 8;
     public static final int RELEASE = 9;
+    public static final int PARTYTIME = 10;
 
     public double armGoal = Robot.elevator.getAngle();
+
+    public boolean dashControl = false;
+    public double driveSpeed = 1.5;
+    public double armSpeed = 0;
 
     protected void updateChildren(){
         Robot.EM.update();
@@ -25,13 +32,27 @@ public class CubeManipulator extends StateMachineBase {
     }
 
     public void update(){
+        System.out.println(driveSpeed);
+        if(driveSpeed > 1){
+            driveSpeed = 1;
+        } else if(driveSpeed < 0){
+            driveSpeed = 0;
+        }
+        if(armSpeed > 1){
+            armSpeed = 1;
+        } else if(armSpeed < 0){
+            armSpeed = 0;
+        }
         switch (state){
             case STOP:
                 Robot.elevator.move(0);
                 break;
             case INPUT:
+                System.out.println("accepting input");
                 if (Robot.elevator.minHeight()) {
                     Robot.IM.setState(IntakeManager.PASS);
+                } else {
+                    Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 }
                 //always return back to this state, check if any button is being pressed. if it is, act accordingly
                 if ((InputManager.moveUp()) && !Robot.elevator.maxHeight()){
@@ -49,7 +70,6 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.scaleHeight()) {
                     setState(ARMSCALE);
                 }
-
                 if (InputManager.returnHeight()) {
                     setState(ARMHOME);
                 }
@@ -60,6 +80,12 @@ public class CubeManipulator extends StateMachineBase {
 
                 if (InputManager.eject()){
                     setState(DROP);
+                }
+                if (InputManager.toggleDash()){
+                    dashControl = !dashControl;
+                }
+                if(InputManager.partyTime() && HAL.getMatchTime() > 135) {
+                    setState(PARTYTIME);
                 }
                 break;
             case ARMUP:
@@ -76,13 +102,12 @@ public class CubeManipulator extends StateMachineBase {
                     //if its not, give back input options
                     setState(INPUT);
                 }
-
                 break;
             case ARMDOWN:
                 Robot.EM.setTarget(armGoal);
                 updateChildren();
-                if(InputManager.moveUp()) {
-                    armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
+                if(InputManager.moveDown()) {
+                    armGoal = Robot.elevator.getAngle() - Constants.ELEVATOR_STEP;
                 } else {
                     setState(INPUT);
                 }
@@ -90,19 +115,19 @@ public class CubeManipulator extends StateMachineBase {
             case ARMSWITCH:
                 armGoal = Constants.SWITCH_HEIGHT;
                 Robot.EM.setTarget(armGoal);
-                Robot.EM.update();
+                updateChildren();
                 setState(INPUT);
                 break;
             case ARMSCALE:
                 armGoal = Constants.SCALE_HEIGHT;
                 Robot.EM.setTarget(armGoal);
-                Robot.EM.update();
+                updateChildren();
                 setState(INPUT);
                 break;
             case ARMHOME:
                 armGoal = Constants.RETURN_HEIGHT;
                 Robot.EM.setTarget(armGoal);
-                Robot.EM.update();
+                updateChildren();
                 setState(INPUT);
                 break;
             case INTAKE:
@@ -129,6 +154,12 @@ public class CubeManipulator extends StateMachineBase {
             case RELEASE:
                 Robot.grip.release();
                 break;
+            case PARTYTIME:
+                if(InputManager.partyTime()){
+                    Robot.drive.setState(Drive.PARTYTIME);
+                } else {
+                    Robot.drive.setState(Drive.DRIVING);
+                }
         }
     }
 

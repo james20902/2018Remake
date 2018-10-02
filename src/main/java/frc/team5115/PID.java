@@ -1,5 +1,7 @@
 package frc.team5115;
 
+import frc.team5115.robot.Robot;
+
 public class PID {
 
     /**
@@ -71,9 +73,6 @@ public class PID {
         return output;
     }
 
-    public double getPID(double setpoint, double reading) {
-        return getPID(setpoint, reading, 0);
-    }
 
     /**
      * Returns true if PID loop has settled. Takes tolerance in reading units and dErrorTolerance in reading units per second

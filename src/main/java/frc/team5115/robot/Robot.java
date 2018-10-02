@@ -39,12 +39,15 @@ public class Robot extends TimedRobot {
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');
         positionChooser.addObject("Center", 'C');
-        SmartDashboard.putData("Strategy", strategyChooser);
+        //SmartDashboard.putData("Strategy", strategyChooser);
 
         strategyChooser = new SendableChooser();
         strategyChooser.addDefault("Switch", 1);
-        SmartDashboard.putData("Position", positionChooser);
+        //SmartDashboard.putData("Position", positionChooser);
 
+        SmartDashboard.putBoolean("Manual Control?", CM.dashControl);
+        SmartDashboard.putNumber("Drive Controller", CM.driveSpeed);
+        //SmartDashboard.putNumber("Arm Controller", CM.armSpeed);
     }
 
     public void autonomousInit(){

@@ -23,7 +23,7 @@ public class CubeManipulator extends StateMachineBase {
     public double armGoal = Robot.elevator.getAngle();
 
     public boolean dashControl = false;
-    public double driveSpeed = 1.5;
+    public double driveSpeed = 0;
     public double armSpeed = 0;
 
     protected void updateChildren(){
@@ -84,7 +84,7 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.toggleDash()){
                     dashControl = !dashControl;
                 }
-                if(InputManager.partyTime() && HAL.getMatchTime() > 135) {
+                if(InputManager.partyTime() && Robot.DS.getMatchTime() > 135) {
                     setState(PARTYTIME);
                 }
                 break;
@@ -155,10 +155,11 @@ public class CubeManipulator extends StateMachineBase {
                 Robot.grip.release();
                 break;
             case PARTYTIME:
-                if(InputManager.partyTime()){
+                if(InputManager.partyTime() && Robot.elevator.minHeight()){
                     Robot.drive.setState(Drive.PARTYTIME);
                 } else {
                     Robot.drive.setState(Drive.DRIVING);
+                    setState(INPUT);
                 }
         }
     }

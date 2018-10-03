@@ -1,5 +1,6 @@
 package frc.team5115.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
     public static IntakeManager IM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
+    public static DriverStation DS;
 
     public void robotInit() {
         //instantiate
@@ -34,16 +36,19 @@ public class Robot extends TimedRobot {
         IM = new IntakeManager();
         EM = new ElevatorManager();
         CM = new CubeManipulator();
+        DS = DriverStation.getInstance();
 
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');
         positionChooser.addObject("Center", 'C');
-        //SmartDashboard.putData("Strategy", strategyChooser);
+        SmartDashboard.putData("Strategy", strategyChooser);
 
         strategyChooser = new SendableChooser();
         strategyChooser.addDefault("Switch", 1);
-        //SmartDashboard.putData("Position", positionChooser);
+        strategyChooser.addObject("Scale", 2);
+        strategyChooser.addObject("Everything broke, just cross the line", 3);
+        SmartDashboard.putData("Position", positionChooser);
 
         SmartDashboard.putBoolean("Manual Control?", CM.dashControl);
         SmartDashboard.putNumber("Drive Controller", CM.driveSpeed);

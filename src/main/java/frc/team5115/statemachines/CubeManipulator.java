@@ -1,8 +1,6 @@
 package frc.team5115.statemachines;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.hal.HAL;
 import frc.team5115.Constants;
 import frc.team5115.robot.InputManager;
 import frc.team5115.robot.Robot;
@@ -66,7 +64,6 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.switchHeight()) {
                     setState(ARMSWITCH);
                 }
-
                 if (InputManager.scaleHeight()) {
                     setState(ARMSCALE);
                 }

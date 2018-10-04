@@ -2,6 +2,7 @@ package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team5115.auto.*;
@@ -73,6 +74,21 @@ public class Robot extends TimedRobot {
         drive.setState(Drive.DRIVING);
         CM.setState(CubeManipulator.INPUT);
         EM.setState(ElevatorManager.MOVING);
+    }
+
+    public void testPeriodic(){
+        Robot.IM.update();
+        if (InputManager.intake()){
+            Robot.IM.setState(IntakeManager.INTAKE);
+        } else if (!InputManager.intake() && Robot.elevator.minHeight()){
+            Robot.IM.setState(IntakeManager.PASS);
+            Robot.IM.update();
+            Timer.delay(1);
+            Robot.grip.grip();
+        } else {
+            Robot.IM.setState(IntakeManager.PASS);
+            Robot.IM.update();
+        }
     }
     public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); System.out.println("autoing"); }
     public void teleopPeriodic() {

@@ -22,7 +22,6 @@ public class Drive extends StateMachineBase {
                 if(Robot.CM.dashControl){
                     forwardSpeed = InputManager.getForward() * InputManager.getThrottle() * Robot.CM.driveSpeed;
                     turnSpeed = InputManager.getTurn() * InputManager.getThrottle() * Robot.CM.driveSpeed;
-
                 } else {
                     forwardSpeed = InputManager.getForward() * InputManager.getThrottle() * Constants.TOP_SPEED;
                     turnSpeed = InputManager.getTurn() * InputManager.getThrottle() * Constants.TOP_TURN_SPEED;
@@ -31,7 +30,7 @@ public class Drive extends StateMachineBase {
                 break;
 
             case PARTYTIME:
-                Robot.drivetrain.drive(0, 1);
+                Robot.drivetrain.drive(1, 1);
                 break;
 
         }

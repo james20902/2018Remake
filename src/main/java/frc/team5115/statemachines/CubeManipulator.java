@@ -46,6 +46,7 @@ public class CubeManipulator extends StateMachineBase {
                 Robot.elevator.move(0);
                 break;
             case INPUT:
+                updateChildren();
                 System.out.println("accepting input");
                 if (Robot.elevator.minHeight()) {
                     Robot.IM.setState(IntakeManager.PASS);

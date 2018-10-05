@@ -43,13 +43,13 @@ public class Robot extends TimedRobot {
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');
         positionChooser.addObject("Center", 'C');
-        SmartDashboard.putData("Strategy", strategyChooser);
+        //SmartDashboard.putData("Strategy", strategyChooser);
 
         strategyChooser = new SendableChooser();
         strategyChooser.addDefault("Switch", 1);
         strategyChooser.addObject("Scale", 2);
         strategyChooser.addObject("Everything broke, just cross the line", 3);
-        SmartDashboard.putData("Position", positionChooser);
+        //SmartDashboard.putData("Position", positionChooser);
 
         SmartDashboard.putBoolean("Manual Control?", CM.dashControl);
         SmartDashboard.putNumber("Drive Controller", CM.driveSpeed);
@@ -78,6 +78,7 @@ public class Robot extends TimedRobot {
 
     public void testPeriodic(){
         Robot.IM.update();
+        Robot.IM.setState(IntakeManager.PASS);
         if (InputManager.intake()){
             Robot.IM.setState(IntakeManager.INTAKE);
         } else if (!InputManager.intake() && Robot.elevator.minHeight()){

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team5115.UDPClient;
 import frc.team5115.auto.*;
 import frc.team5115.statemachines.*;
 import frc.team5115.systems.*;
@@ -25,7 +26,9 @@ public class Robot extends TimedRobot {
     public static IntakeManager IM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
+    public static SendableChooser colorTarget;
     public static DriverStation DS;
+    public static UDPClient udpclient;
 
     public void robotInit() {
         //instantiate
@@ -43,17 +46,24 @@ public class Robot extends TimedRobot {
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');
         positionChooser.addObject("Center", 'C');
-        //SmartDashboard.putData("Strategy", strategyChooser);
+        SmartDashboard.putData("Position", positionChooser);
 
         strategyChooser = new SendableChooser();
         strategyChooser.addDefault("Switch", 1);
         strategyChooser.addObject("Scale", 2);
         strategyChooser.addObject("Everything broke, just cross the line", 3);
-        //SmartDashboard.putData("Position", positionChooser);
+        SmartDashboard.putData("Strategy", strategyChooser);
 
         SmartDashboard.putBoolean("Manual Control?", CM.dashControl);
         SmartDashboard.putNumber("Drive Controller", CM.driveSpeed);
         //SmartDashboard.putNumber("Arm Controller", CM.armSpeed);
+
+        colorTarget = new SendableChooser();
+        colorTarget.addDefault("Red", "red");
+        colorTarget.addObject("Blue", "blue");
+
+        udpclient = new UDPClient("10.51.15.30", 5803);
+        udpclient.start();
     }
 
     public void autonomousInit(){
@@ -78,17 +88,11 @@ public class Robot extends TimedRobot {
 
     public void testPeriodic(){
         Robot.IM.update();
-        Robot.IM.setState(IntakeManager.PASS);
-        if (InputManager.intake()){
+        System.out.println(udpclient.getLastResponse());
+        if (udpclient.getLastResponse() == colorTarget.getSelected()){
             Robot.IM.setState(IntakeManager.INTAKE);
-        } else if (!InputManager.intake() && Robot.elevator.minHeight()){
-            Robot.IM.setState(IntakeManager.PASS);
-            Robot.IM.update();
-            Timer.delay(1);
-            Robot.grip.grip();
         } else {
             Robot.IM.setState(IntakeManager.PASS);
-            Robot.IM.update();
         }
     }
     public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); System.out.println("autoing"); }

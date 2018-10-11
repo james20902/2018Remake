@@ -36,6 +36,23 @@ public class ElevatorManager extends StateMachineBase {
         }
     }
 
+    public void collisionAvoidance(){
+        //if the elevator is at the lowest possible height, and isnt moving
+        if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
+            //keep the intake up
+            Robot.IM.setState(IntakeManager.PASS);
+            //if the arm is at a height less than or equal to the intake height (so when the arm is about
+            //to hit the intake
+        } else if ((Robot.elevator.getAngle() <= Constants.INTAKE_HEIGHT)) {
+            //open and let the arm through
+            Robot.IM.setState(IntakeManager.OPEN);
+            //otherwise
+        } else {
+            //assume the arm is past the point of collision and remain closed
+            Robot.IM.setState(IntakeManager.CLOSE);
+        }
+    }
+
 
     public void setState(int s) {
         switch (s) {
@@ -56,20 +73,7 @@ public class ElevatorManager extends StateMachineBase {
                 break;
 
             case MOVING:
-                //if the elevator is at the lowest possible height, and isnt moving
-                if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
-                    //keep the intake up
-                    Robot.IM.setState(IntakeManager.PASS);
-                    //if the arm is at a height less than or equal to the intake height (so when the arm is about
-                    //to hit the intake
-                } else if ((Robot.elevator.getAngle() <= Constants.INTAKE_HEIGHT)) {
-                    //open and let the arm through
-                    Robot.IM.setState(IntakeManager.OPEN);
-                    //otherwise
-                } else {
-                    //assume the arm is past the point of collision and remain closed
-                    Robot.IM.setState(IntakeManager.CLOSE);
-                }
+                collisionAvoidance();
                 //then move the arm and calculate how far it needs to move
                 Robot.elevator.move(elevatorMover.getPID(targetAngle, angle, dAngle));
                 break;

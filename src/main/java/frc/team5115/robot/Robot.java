@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team5115.Constants;
 import frc.team5115.UDPClient;
 import frc.team5115.auto.*;
 import frc.team5115.statemachines.*;
@@ -69,8 +70,8 @@ public class Robot extends TimedRobot {
     public void autonomousInit(){
         drivetrain.resetGyro();
         drivetrain.resetEncoders();
-        OP = new ObjectivePositions((char)positionChooser.getSelected());
-        auto = new Auto((int)strategyChooser.getSelected());
+        OP = new ObjectivePositions('c'/*(char)positionChooser.getSelected()*/);
+        auto = new Auto(1/*(int)strategyChooser.getSelected()*/);
     }
 
 
@@ -84,6 +85,7 @@ public class Robot extends TimedRobot {
         drive.setState(Drive.DRIVING);
         CM.setState(CubeManipulator.INPUT);
         EM.setState(ElevatorManager.MOVING);
+        EM.setTarget(Constants.RETURN_HEIGHT);
     }
 
     public void testPeriodic(){

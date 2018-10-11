@@ -18,7 +18,7 @@ public class CubeManipulator extends StateMachineBase {
     public static final int RELEASE = 9;
     public static final int PARTYTIME = 10;
 
-    public double armGoal = Robot.elevator.getAngle();
+    public double armGoal;
 
     public boolean dashControl = false;
     public double driveSpeed = 0;
@@ -46,6 +46,7 @@ public class CubeManipulator extends StateMachineBase {
                 Robot.elevator.move(0);
                 break;
             case INPUT:
+                armGoal = Robot.elevator.getAngle();
                 updateChildren();
                 System.out.println("accepting input");
                 if (Robot.elevator.minHeight()) {
@@ -111,21 +112,15 @@ public class CubeManipulator extends StateMachineBase {
                 }
                 break;
             case ARMSWITCH:
-                armGoal = Constants.SWITCH_HEIGHT;
-                Robot.EM.setTarget(armGoal);
-                updateChildren();
+                Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
                 setState(INPUT);
                 break;
             case ARMSCALE:
-                armGoal = Constants.SCALE_HEIGHT;
-                Robot.EM.setTarget(armGoal);
-                updateChildren();
+                Robot.EM.setTarget(Constants.SCALE_HEIGHT);
                 setState(INPUT);
                 break;
             case ARMHOME:
-                armGoal = Constants.RETURN_HEIGHT;
-                Robot.EM.setTarget(armGoal);
-                updateChildren();
+                Robot.EM.setTarget(Constants.RETURN_HEIGHT);
                 setState(INPUT);
                 break;
             case INTAKE:

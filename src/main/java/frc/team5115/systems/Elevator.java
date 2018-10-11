@@ -30,7 +30,7 @@ public class Elevator {
     }
 
     public void move(double speed){
-        movingArm = Math.abs(speed) > 0.1;
+        movingArm = Math.abs(speed) > 0.07;
 
         armMover.set(ControlMode.PercentOutput, speed);
     }

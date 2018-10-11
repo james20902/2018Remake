@@ -1,6 +1,6 @@
 package frc.team5115.auto;
 
-import edu.wpi.first.wpilibj.DriverStation;
+import frc.team5115.robot.Robot;
 
 public class ObjectivePositions {
 
@@ -10,8 +10,8 @@ public class ObjectivePositions {
 
     public ObjectivePositions(char wheretostart){
         start = wheretostart;
-        switchpos = DriverStation.getInstance().getGameSpecificMessage().charAt(0);
-        scalepos = DriverStation.getInstance().getGameSpecificMessage().charAt(1);
+        switchpos = Robot.DS.getGameSpecificMessage().charAt(0);
+        scalepos = Robot.DS.getGameSpecificMessage().charAt(1);
     }
     public boolean isCenter(){return start == 'c';}
     public boolean switchOurs(){ return start == switchpos; }

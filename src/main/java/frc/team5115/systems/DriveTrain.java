@@ -54,6 +54,7 @@ public class DriveTrain {
         backleft.set(ControlMode.PercentOutput, -leftspeed);
         backright.set(ControlMode.PercentOutput, rightspeed);
     }
+
     public double leftDist() {
         double leftDist = -direction * backleft.getSelectedSensorPosition(0);
         return leftDist / 1440 * 6 * Math.PI / 12;

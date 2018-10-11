@@ -50,8 +50,8 @@ public class Constants {
     public static final double ELEVATOR_SPEED_SWITCH = 0.5;
     public static final double ELEVATOR_THRESHOLD = 20;
     public static final double ELEVATOR_SPEED = 0.75;
-    public static final int POT_THRESHOLD = 900;
-    public static final int ELEVATOR_MAX = 817;
+    public static final int POT_THRESHOLD = 944;
+    public static final int ELEVATOR_MAX = 940;
     public static final int ELEVATOR_MIN = 73;
     public static final int ELEVATOR_STEP = 100;
     public static final double INTAKE_SPEED = 0.65;
@@ -61,7 +61,7 @@ public class Constants {
     public static final double TOP_TURN_SPEED = 0.75;
 
     // DIFFERENT BETWEEN ROBOTS - DO NOT COPY
-    public static final double RETURN_HEIGHT = 73;
+    public static final double RETURN_HEIGHT = 75;
     public static final double INTAKE_HEIGHT = 160;
     public static final double SWITCH_HEIGHT = 250;
     public static final double SCALE_HEIGHT = 720;

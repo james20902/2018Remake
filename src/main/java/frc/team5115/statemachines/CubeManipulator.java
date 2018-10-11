@@ -78,7 +78,7 @@ public class CubeManipulator extends StateMachineBase {
                 }
 
                 if (InputManager.eject()){
-                    setState(DROP);
+                    setState(RELEASE);
                 }
                 if (InputManager.toggleDash()){
                     dashControl = !dashControl;
@@ -146,6 +146,7 @@ public class CubeManipulator extends StateMachineBase {
                 break;
             case RELEASE:
                 Robot.grip.release();
+                setState(INPUT);
                 break;
             case PARTYTIME:
                 if(InputManager.partyTime() && Robot.elevator.minHeight()){

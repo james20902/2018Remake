@@ -38,7 +38,7 @@ public class ElevatorManager extends StateMachineBase {
 
     public void collisionAvoidance(){
         //if the elevator is at the lowest possible height, and isnt moving
-        if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
+        if (Robot.elevator.minHeight()) {
             //keep the intake up
             Robot.IM.setState(IntakeManager.PASS);
             //if the arm is at a height less than or equal to the intake height (so when the arm is about

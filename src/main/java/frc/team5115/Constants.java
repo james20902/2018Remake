@@ -16,6 +16,7 @@ public class Constants {
     public static final int RELEASEGRIP = 1;
     public static final int SWITCHMODES = 12;
     public static final int PARTYTIME = 5;
+    public static final int CORRECTCUBE = 3;
 
     //PID
     public static final double AUTO_FORWARD_KP = 0.4;
@@ -51,7 +52,7 @@ public class Constants {
     public static final double ELEVATOR_THRESHOLD = 20;
     public static final double ELEVATOR_SPEED = 0.75;
     public static final int POT_THRESHOLD = 944;
-    public static final int ELEVATOR_MAX = 940;
+    public static final int ELEVATOR_MAX = 920;
     public static final int ELEVATOR_MIN = 73;
     public static final int ELEVATOR_STEP = 100;
     public static final double INTAKE_SPEED = 0.65;
@@ -64,7 +65,7 @@ public class Constants {
     public static final double RETURN_HEIGHT = 75;
     public static final double INTAKE_HEIGHT = 160;
     public static final double SWITCH_HEIGHT = 250;
-    public static final double SCALE_HEIGHT = 720;
+    public static final double SCALE_HEIGHT = 800;
 
     //CAN motors
     public static final int FRONT_LEFT_MOTOR_ID = 3;

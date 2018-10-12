@@ -17,6 +17,7 @@ public class CubeManipulator extends StateMachineBase {
     public static final int DROP = 8;
     public static final int RELEASE = 9;
     public static final int PARTYTIME = 10;
+    public static final int CORRECT = 11;
 
     public double armGoal;
 
@@ -58,11 +59,9 @@ public class CubeManipulator extends StateMachineBase {
                 if ((InputManager.moveUp()) && !Robot.elevator.maxHeight()){
                     setState(ARMUP);
                 }
-
                 if (InputManager.moveDown() && !Robot.elevator.minHeight()){
                     setState(ARMDOWN);
                 }
-
                 if (InputManager.switchHeight()) {
                     setState(ARMSWITCH);
                 }
@@ -72,11 +71,15 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.returnHeight()) {
                     setState(ARMHOME);
                 }
-
                 if (InputManager.intake()){
                     setState(INTAKE);
                 }
-
+                if (InputManager.drop()){
+                    setState(DROP);
+                }
+                if (InputManager.correct()){
+                    setState(CORRECT);
+                }
                 if (InputManager.eject()){
                     setState(RELEASE);
                 }
@@ -128,6 +131,7 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.intake()){
                     Robot.IM.setState(IntakeManager.INTAKE);
                 } else if (!InputManager.intake() && Robot.elevator.minHeight()){
+                    Robot.grip.release();
                     Robot.IM.setState(IntakeManager.PASS);
                     Robot.IM.update();
                     Timer.delay(1);
@@ -155,6 +159,23 @@ public class CubeManipulator extends StateMachineBase {
                     Robot.drive.setState(Drive.DRIVING);
                     setState(INPUT);
                 }
+                break;
+            case CORRECT:
+                Robot.IM.update();
+                if(InputManager.correct()){
+                    Robot.IM.setState(IntakeManager.CORRECT);
+                } else if (!InputManager.correct() && Robot.elevator.minHeight()){
+                    Robot.IM.setState(IntakeManager.PASS);
+                    Robot.IM.update();
+                    Timer.delay(1);
+                    Robot.grip.grip();
+                    setState(INPUT);
+                } else {
+                    Robot.IM.setState(IntakeManager.PASS);
+                    Robot.IM.update();
+                    setState(INPUT);
+                }
+                break;
         }
     }
 

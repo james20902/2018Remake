@@ -72,6 +72,12 @@ public class InputManager {
     public static boolean eject(){
         return joy.getRawButton(Constants.RELEASEGRIP);
     }
+    public static boolean correct(){
+        return joy.getRawButton(Constants.CORRECTCUBE);
+    }
+    public static boolean drop(){
+        return joy.getRawButton(Constants.DROP);
+    }
 
     public static boolean moveUp(){
         return joy.getRawButton(Constants.UP);

@@ -30,6 +30,7 @@ public class Auto extends StateMachineBase{
                 switchstrategy.setState(switchstrategy.INIT);
                 scalestrategy.setState(scalestrategy.INIT);
                 oshit.setState(oshit.INIT);
+                break;
         }
         super.setState(s);
     }
@@ -40,13 +41,17 @@ public class Auto extends StateMachineBase{
         switch (state) {
             case INIT:
                 setState(whatitdo);
+                break;
             case SWITCH:
                 System.out.println("Updating switch");
                 switchstrategy.update();
+                break;
             case SCALE:
                 scalestrategy.update();
+                break;
             case UHOH:
                 oshit.update();
+                break;
         }
     }
 }

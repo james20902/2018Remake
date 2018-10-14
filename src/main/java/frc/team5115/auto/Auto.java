@@ -10,11 +10,13 @@ public class Auto extends StateMachineBase{
     public static final int SWITCH = 1;
     public static final int SCALE = 2;
     public static final int UHOH = 3;
+    public static final int TEST = 4;
 
     //define auto routines
     public static Switch switchstrategy;
     public static Scale scalestrategy;
     public static UHOH oshit;
+    public static PIDBenchmark test;
 
 
     public Auto(int Strategy) {
@@ -22,6 +24,7 @@ public class Auto extends StateMachineBase{
         switchstrategy = new Switch();
         scalestrategy = new Scale();
         oshit = new UHOH();
+        test = new PIDBenchmark();
     }
 
     public void setState(int s) {
@@ -51,6 +54,9 @@ public class Auto extends StateMachineBase{
                 break;
             case UHOH:
                 oshit.update();
+                break;
+            case TEST:
+                test.update();
                 break;
         }
     }

@@ -40,15 +40,15 @@ public class Switch extends StateMachineBase {
                 Robot.grip.grip();
                 //determine which path to take
                 if(center){
-                    drive.startLine(1.5, 0.45);
+                    drive.startLine(1.5, 0.45, false);
                 } else if(side) {
-                    drive.startLine(12, 0.75);
+                    drive.startLine(12, 0.75, false);
                 } else if(scale){
                     Robot.EM.setState(ElevatorManager.MOVING);
                     Robot.EM.setTarget(Constants.SCALE_HEIGHT);
-                    drive.startLine(19, 0.75);
+                    drive.startLine(19, 0.75, false);
                 } else {
-                    drive.startLine(11.6, 0.75);
+                    drive.startLine(11.6, 0.75, false);
                 }
                 setState(DRIVING);
                 break;
@@ -57,22 +57,22 @@ public class Switch extends StateMachineBase {
                 if(drive.state == AutoDrive.FINISHED){
                     if(center){
                         if(Robot.OP.switchpos == 'R'){
-                            drive.startTurn(45, 0.5);
+                            drive.startTurn(45, 0.5, false);
                         } else {
-                            drive.startTurn(-45, 0.5);
+                            drive.startTurn(-45, 0.5, false);
                         }
                     } else if(side) {
                         if(Robot.OP.switchpos == 'R'){
-                            drive.startTurn(-90, 0.5);
+                            drive.startTurn(-90, 0.5, false);
                         } else {
-                            drive.startTurn(90, 0.5);
+                            drive.startTurn(90, 0.5, false);
                         }
                     } else if(scale){
                         if (Robot.OP.scalepos == 'R'){
-                            drive.startTurn(-30, .5);
+                            drive.startTurn(-30, .5, false);
                         }
                         else {
-                            drive.startTurn(30, .5);
+                            drive.startTurn(30, .5, false);
                         }
                     } else {
                         drive.setState(drive.STOP);
@@ -89,16 +89,16 @@ public class Switch extends StateMachineBase {
                     Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
                     if(center){
                         if(Robot.OP.switchpos == 'R') {
-                            drive.startLine(5.5, 0.5);
+                            drive.startLine(5.5, 0.5, false);
                         }
                         else {
-                            drive.startLine(7, 0.5);
+                            drive.startLine(7, 0.5, false);
                         }
                     } else if(side){
-                        drive.startLine(2.5, 0.25);
+                        drive.startLine(2.5, 0.25, false);
                     } else { //assume we're going to the scale
                         Robot.EM.setTarget(Constants.SCALE_HEIGHT);
-                        drive.startLine(4, 0.25);
+                        drive.startLine(4, 0.25, false);
                     }
                     time = Timer.getFPGATimestamp();
                     setState(DRIVEAGAIN);
@@ -109,10 +109,10 @@ public class Switch extends StateMachineBase {
                 if(drive.state == AutoDrive.FINISHED){
                     if(center){
                         if(Robot.OP.switchpos == 'R') {
-                            drive.startTurn(45, 0.5);
+                            drive.startTurn(45, 0.5, false);
                         }
                         else {
-                            drive.startTurn(-45, 0.5);
+                            drive.startTurn(-45, 0.5, false);
                         }
                         setState(CENTERISNTDONEYET);
                     } else { //if we did anything from the side, we're done.
@@ -126,7 +126,7 @@ public class Switch extends StateMachineBase {
             case CENTERISNTDONEYET:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED) {
-                    drive.startLine(4, 0.25);
+                    drive.startLine(4, 0.25, false);
                 }
                 break;
             case STILLISNTDONEYET:

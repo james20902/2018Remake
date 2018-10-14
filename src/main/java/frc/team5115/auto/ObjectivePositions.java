@@ -13,7 +13,7 @@ public class ObjectivePositions {
         switchpos = Robot.DS.getGameSpecificMessage().charAt(0);
         scalepos = Robot.DS.getGameSpecificMessage().charAt(1);
     }
-    public boolean isCenter(){return start == 'c';}
+    public boolean isCenter(){return start == 'C';}
     public boolean switchOurs(){ return start == switchpos; }
     public boolean scaleOurs(){ return start == scalepos; }
     public boolean objectivesAligned(){return (switchpos == scalepos);}

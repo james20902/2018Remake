@@ -20,30 +20,39 @@ public class AutoDrive extends StateMachineBase {
     double targetDist;
     double targetAngle;
 
+
+
     PID forwardController;
     PID turnController;
 
-    public void startLine(double dist, double maxSpeed) {
+    public void startLine(double dist, double maxSpeed, boolean livevalues) {
         line = true;
         //Takes some time to reset gyros + encoders
         Timer.delay(0.1);
         targetDist = Robot.drivetrain.distanceTraveled() + dist;
         targetAngle = Robot.drivetrain.getYaw();
-
-        forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD ,maxSpeed);
-        turnController = new PID(Constants.AUTO_TURN_KP, Constants.AUTO_TURN_KI ,Constants.AUTO_TURN_KD);
-
+        if(livevalues){
+            forwardController = new PID(Robot.kpline, Robot.kiline, Robot.kdline ,maxSpeed);
+            turnController = new PID(Robot.kpturn, Robot.kiturn ,Robot.kdturn);
+        } else {
+            forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD ,maxSpeed);
+            turnController = new PID(Constants.AUTO_TURN_KP, Constants.AUTO_TURN_KI ,Constants.AUTO_TURN_KD);
+        }
         setState(DRIVING);
     }
 
-    public void startTurn(double angle, double maxSpeed) {
+    public void startTurn(double angle, double maxSpeed, boolean livevalues) {
         line = false;
         targetDist = Robot.drivetrain.distanceTraveled();
         targetAngle = Robot.drivetrain.getYaw() + (angle);
 
-        forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD);
-        turnController = new PID(Constants.TURN_KP, Constants.TURN_KI ,Constants.AUTO_TURN_KD, maxSpeed);
-
+        if(livevalues){
+            forwardController = new PID(Robot.kpline, Robot.kiline, Robot.kdline);
+            turnController = new PID(Robot.kpturn, Robot.kiturn ,Robot.kdturn ,maxSpeed);
+        } else {
+            forwardController = new PID(Constants.AUTO_FORWARD_KP, Constants.AUTO_FORWARD_KI, Constants.AUTO_FORWARD_KD);
+            turnController = new PID(Constants.TURN_KP, Constants.TURN_KI ,Constants.AUTO_TURN_KD, maxSpeed);
+        }
         setState(DRIVING);
     }
 

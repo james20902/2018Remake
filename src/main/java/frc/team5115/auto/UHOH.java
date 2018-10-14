@@ -29,7 +29,7 @@ public class UHOH extends StateMachineBase {
                 Robot.EM.setState(ElevatorManager.STOP);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 Robot.grip.grip();
-                drive.startLine(11.6, 0.75);
+                drive.startLine(11.6, 0.75, false);
                 setState(DRIVING);
                 break;
             case DRIVING:

@@ -31,6 +31,14 @@ public class Robot extends TimedRobot {
     public static DriverStation DS;
     public static UDPClient udpclient;
 
+    public static double kpline = 0;
+    public static double kiline = 0;
+    public static double kdline = 0;
+
+    public static double kpturn = 0;
+    public static double kiturn = 0;
+    public static double kdturn = 0;
+
     public void robotInit() {
         //instantiate
         drivetrain = new DriveTrain();
@@ -65,16 +73,22 @@ public class Robot extends TimedRobot {
 
         udpclient = new UDPClient("10.51.15.30", 5803);
         udpclient.start();
+
+        SmartDashboard.putNumber("P line", kpline);
+        SmartDashboard.putNumber("I line", kiline);
+        SmartDashboard.putNumber("D line", kdline);
+
+        SmartDashboard.putNumber("P turn", kpturn);
+        SmartDashboard.putNumber("I turn", kiturn);
+        SmartDashboard.putNumber("D turn", kdturn);
     }
 
     public void autonomousInit(){
         drivetrain.resetGyro();
         drivetrain.resetEncoders();
-        OP = new ObjectivePositions('c'/*(char)positionChooser.getSelected()*/);
-        auto = new Auto(1/*(int)strategyChooser.getSelected()*/);
+        OP = new ObjectivePositions((char)positionChooser.getSelected());
+        auto = new Auto((int)strategyChooser.getSelected());
     }
-
-
     public void teleopInit() {
         //assume the robot just turned on, and the drivetrain is not in use
         drivetrain.inuse = false;
@@ -85,23 +99,29 @@ public class Robot extends TimedRobot {
         drive.setState(Drive.DRIVING);
         CM.setState(CubeManipulator.INPUT);
         EM.setState(ElevatorManager.MOVING);
-        EM.setTarget(Constants.RETURN_HEIGHT);
+    }
+    public void testInit(){
+        drivetrain.resetGyro();
+        drivetrain.resetEncoders();
+        auto = new Auto(4);
     }
 
-    public void testPeriodic(){
-        Robot.IM.update();
-        System.out.println(udpclient.getLastResponse());
-        if (udpclient.getLastResponse() == colorTarget.getSelected()){
-            Robot.IM.setState(IntakeManager.INTAKE);
-        } else {
-            Robot.IM.setState(IntakeManager.PASS);
-        }
-    }
+
     public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); System.out.println("autoing"); }
     public void teleopPeriodic() {
         //collect input every 5ms
         drive.update();
         CM.update();
+    }
+    public void testPeriodic(){
+//        Robot.IM.update();
+//        System.out.println(udpclient.getLastResponse());
+//        if (udpclient.getLastResponse() == colorTarget.getSelected()){
+//            Robot.IM.setState(IntakeManager.INTAKE);
+//        } else {
+//            Robot.IM.setState(IntakeManager.PASS);
+//        }
+        auto.update();
     }
 
     public void disabledInit() {

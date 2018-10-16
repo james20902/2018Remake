@@ -14,8 +14,8 @@ public class Intake {
 	DoubleSolenoid cubeSolenoidRight;
 	DoubleSolenoid intakeLifterLeft;
 	DoubleSolenoid intakeLifterRight;
-	Spark intakeWheelsLeft;
-	Spark intakeWheelsRight;
+	public Spark intakeWheelsLeft;
+	public Spark intakeWheelsRight;
 	public Intake(){
 		cubeDetectorL = new DigitalInput(Constants.CUBE_DETECTOR_L);
 		cubeDetectorR = new DigitalInput(Constants.CUBE_DETECTOR_R);
@@ -58,8 +58,8 @@ public class Intake {
 		return !cubeDetectorL.get() && !cubeDetectorR.get();
 	}
 	public void intake(double dir){
-		intakeWheelsLeft.set(-dir);
-		intakeWheelsRight.set(dir * 0.9);
+		intakeWheelsLeft.set(/*-dir*/ -0.5);
+		intakeWheelsRight.set(/*dir * 0.9*/ 0.75);
 	}
 	public void bump(){
 		intakeWheelsRight.set(-0.1);

@@ -55,7 +55,7 @@ public class Constants {
     public static final int ELEVATOR_MAX = 920;
     public static final int ELEVATOR_MIN = 73;
     public static final int ELEVATOR_STEP = 100;
-    public static final double INTAKE_SPEED = 0.65;
+    public static final double INTAKE_SPEED = 0.5;
 
     // Physical robot attributes (these typically shouldn't exceed 1)
     public static final double TOP_SPEED = 1;

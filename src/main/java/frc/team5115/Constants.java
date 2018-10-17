@@ -49,7 +49,7 @@ public class Constants {
     //Speed and Delay parameters
     public static final double ELEVATOR_SPEED_SCALE = 1;
     public static final double ELEVATOR_SPEED_SWITCH = 0.5;
-    public static final double ELEVATOR_THRESHOLD = 20;
+    public static final double ELEVATOR_THRESHOLD = 15;
     public static final double ELEVATOR_SPEED = 0.75;
     public static final int POT_THRESHOLD = 944;
     public static final int ELEVATOR_MAX = 920;

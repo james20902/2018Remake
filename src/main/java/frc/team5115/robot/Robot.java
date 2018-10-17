@@ -98,11 +98,12 @@ public class Robot extends TimedRobot {
         //allow our drivetrain and subsystems to accept controller input
         drive.setState(Drive.DRIVING);
         CM.setState(CubeManipulator.INPUT);
-        EM.setState(ElevatorManager.MOVING);
+        EM.setState(ElevatorManager.INIT);
     }
     public void testInit(){
         drivetrain.resetGyro();
         drivetrain.resetEncoders();
+        OP = new ObjectivePositions((char)positionChooser.getSelected());
         auto = new Auto(4);
     }
 

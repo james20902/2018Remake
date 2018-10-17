@@ -20,6 +20,7 @@ public class CubeManipulator extends StateMachineBase {
     public static final int CORRECT = 11;
 
     public double armGoal;
+    private double time;
 
     public boolean dashControl = false;
     public double driveSpeed = 0;
@@ -50,11 +51,18 @@ public class CubeManipulator extends StateMachineBase {
                 armGoal = Robot.elevator.getAngle();
                 updateChildren();
                 System.out.println("accepting input");
+                if(Timer.getFPGATimestamp() >= time + 1) {
+                    Robot.grip.grip();
+                }
+                else {
+                    Robot.grip.release();
+                }
                 if (Robot.elevator.minHeight()) {
                     Robot.IM.setState(IntakeManager.PASS);
                 } else {
                     Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 }
+
                 //always return back to this state, check if any button is being pressed. if it is, act accordingly
                 if ((InputManager.moveUp()) && !Robot.elevator.maxHeight()){
                     setState(ARMUP);
@@ -134,8 +142,7 @@ public class CubeManipulator extends StateMachineBase {
                     Robot.grip.release();
                     Robot.IM.setState(IntakeManager.PASS);
                     Robot.IM.update();
-                    Timer.delay(1);
-                    Robot.grip.grip();
+                    time = Timer.getFPGATimestamp();
                     setState(INPUT);
                 } else {
                     Robot.IM.setState(IntakeManager.PASS);
@@ -150,6 +157,7 @@ public class CubeManipulator extends StateMachineBase {
                 break;
             case RELEASE:
                 Robot.grip.release();
+                time = Timer.getFPGATimestamp();
                 setState(INPUT);
                 break;
             case PARTYTIME:
@@ -167,8 +175,7 @@ public class CubeManipulator extends StateMachineBase {
                 } else if (!InputManager.correct() && Robot.elevator.minHeight()){
                     Robot.IM.setState(IntakeManager.PASS);
                     Robot.IM.update();
-                    Timer.delay(1);
-                    Robot.grip.grip();
+                    time = Timer.getFPGATimestamp();
                     setState(INPUT);
                 } else {
                     Robot.IM.setState(IntakeManager.PASS);

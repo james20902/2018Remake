@@ -6,7 +6,8 @@ import frc.team5115.robot.Robot;
 
 public class ElevatorManager extends StateMachineBase {
 
-    public static final int MOVING = 1;
+    public static final int INIT = 1;
+    public static final int MOVING = 2;
 
     double error;
     double errorAccum = 0;
@@ -38,7 +39,7 @@ public class ElevatorManager extends StateMachineBase {
 
     public void collisionAvoidance(){
         //if the elevator is at the lowest possible height, and isnt moving
-        if (Robot.elevator.minHeight()) {
+        if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
             //keep the intake up
             Robot.IM.setState(IntakeManager.PASS);
             //if the arm is at a height less than or equal to the intake height (so when the arm is about
@@ -71,7 +72,16 @@ public class ElevatorManager extends StateMachineBase {
             case STOP:
                 Robot.elevator.move(0);
                 break;
-
+            case INIT:
+                if (Robot.elevator.getAngle() > Constants.ELEVATOR_MAX) {
+                    targetAngle = Constants.ELEVATOR_MAX;
+                } else if (Robot.elevator.getAngle() < Constants.ELEVATOR_MIN) {
+                    targetAngle = Constants.ELEVATOR_MIN;
+                } else {
+                    targetAngle = Robot.elevator.getAngle();
+                }
+                setState(MOVING);
+                break;
             case MOVING:
                 collisionAvoidance();
                 //then move the arm and calculate how far it needs to move

@@ -9,7 +9,6 @@ import frc.team5115.Constants;
 
 public class Elevator {
 
-    double lastAngle = 0;
     public boolean movingArm = false;
     TalonSRX armMover;
 
@@ -30,7 +29,7 @@ public class Elevator {
     }
 
     public void move(double speed){
-        movingArm = Math.abs(speed) > 0.01;
+        movingArm = Math.abs(speed) > 0.15;
 
         armMover.set(ControlMode.PercentOutput, speed);
     }

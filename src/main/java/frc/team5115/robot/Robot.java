@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
     public static ElevatorManager EM;
     public static CubeManipulator CM;
     public static IntakeManager IM;
+    public static GripManager GM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
     public static SendableChooser colorTarget;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
         IM = new IntakeManager();
         EM = new ElevatorManager();
         CM = new CubeManipulator();
+        GM = new GripManager();
         DS = DriverStation.getInstance();
 
         positionChooser = new SendableChooser();

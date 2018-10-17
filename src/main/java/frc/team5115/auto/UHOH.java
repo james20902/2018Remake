@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Timer;
 import frc.team5115.Constants;
 import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.ElevatorManager;
+import frc.team5115.statemachines.GripManager;
 import frc.team5115.statemachines.IntakeManager;
 import frc.team5115.statemachines.StateMachineBase;
 
@@ -21,6 +22,7 @@ public class UHOH extends StateMachineBase {
         drive.update();
         Robot.EM.update();
         Robot.IM.update();
+        Robot.GM.update();
     }
 
     public void update(){
@@ -28,7 +30,7 @@ public class UHOH extends StateMachineBase {
             case INIT:
                 Robot.EM.setState(ElevatorManager.STOP);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
-                Robot.grip.grip();
+                Robot.GM.setState(GripManager.GRIP);
                 drive.startLine(11.6, 0.75, false);
                 setState(DRIVING);
                 break;

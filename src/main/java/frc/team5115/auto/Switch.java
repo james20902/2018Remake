@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Timer;
 import frc.team5115.Constants;
 import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.ElevatorManager;
-import frc.team5115.statemachines.GripManager;
 import frc.team5115.statemachines.IntakeManager;
 import frc.team5115.statemachines.StateMachineBase;
 
@@ -31,7 +30,6 @@ public class Switch extends StateMachineBase {
         drive.update();
         Robot.EM.update();
         Robot.IM.update();
-        Robot.GM.update();
     }
 
     public void update(){
@@ -39,7 +37,7 @@ public class Switch extends StateMachineBase {
             case INIT:
                 Robot.EM.setState(ElevatorManager.STOP);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
-                Robot.GM.setState(GripManager.GRIP);
+                Robot.grip.grip();
                 //determine which path to take
                 if(center){
                     drive.startLine(1.5, 0.45, false);
@@ -120,7 +118,7 @@ public class Switch extends StateMachineBase {
                     } else { //if we did anything from the side, we're done.
                         drive.setState(drive.STOP);
                         Robot.EM.setState(ElevatorManager.STOP);
-                        Robot.GM.setState(GripManager.RELEASE);
+                        Robot.grip.release();
                         setState(FINISHED);
                     }
                 }
@@ -136,7 +134,7 @@ public class Switch extends StateMachineBase {
                 if(drive.state == AutoDrive.FINISHED){
                     drive.setState(drive.STOP);
                     Robot.EM.setState(ElevatorManager.STOP);
-                    Robot.GM.setState(GripManager.RELEASE);
+                    Robot.grip.release();
                     setState(FINISHED);
                 }
                 break;

@@ -20,6 +20,7 @@ public class CubeManipulator extends StateMachineBase {
     public static final int CORRECT = 11;
 
     public double armGoal;
+    private double time;
 
     public boolean dashControl = false;
     public double driveSpeed = 0;
@@ -28,7 +29,6 @@ public class CubeManipulator extends StateMachineBase {
     protected void updateChildren(){
         Robot.EM.update();
         Robot.IM.update();
-        Robot.CM.update();
     }
 
     public void update(){
@@ -51,6 +51,12 @@ public class CubeManipulator extends StateMachineBase {
                 armGoal = Robot.elevator.getAngle();
                 updateChildren();
                 System.out.println("accepting input");
+                if(Timer.getFPGATimestamp() >= time + 1) {
+                    Robot.grip.grip();
+                }
+                else {
+                    Robot.grip.release();
+                }
                 if (Robot.elevator.minHeight()) {
                     Robot.IM.setState(IntakeManager.PASS);
                 } else {
@@ -133,9 +139,10 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.intake()){
                     Robot.IM.setState(IntakeManager.INTAKE);
                 } else if (!InputManager.intake() && Robot.elevator.minHeight()){
-                    Robot.GM.setState(GripManager.RELEASE);
+                    Robot.grip.release();
                     Robot.IM.setState(IntakeManager.PASS);
-                    Robot.GM.setState(GripManager.STARTCLOCK);
+                    Robot.IM.update();
+                    time = Timer.getFPGATimestamp();
                     setState(INPUT);
                 } else {
                     Robot.IM.setState(IntakeManager.PASS);
@@ -145,10 +152,12 @@ public class CubeManipulator extends StateMachineBase {
                 break;
             case DROP:
                 Robot.IM.setState(IntakeManager.DROP);
+                Robot.IM.update();
                 setState(INPUT);
                 break;
             case RELEASE:
-                Robot.GM.setState(GripManager.RELEASE);
+                Robot.grip.release();
+                time = Timer.getFPGATimestamp();
                 setState(INPUT);
                 break;
             case PARTYTIME:
@@ -164,12 +173,13 @@ public class CubeManipulator extends StateMachineBase {
                 if(InputManager.correct()){
                     Robot.IM.setState(IntakeManager.CORRECT);
                 } else if (!InputManager.correct() && Robot.elevator.minHeight()){
-                    Robot.GM.setState(GripManager.RELEASE);
                     Robot.IM.setState(IntakeManager.PASS);
-                    Robot.GM.setState(GripManager.STARTCLOCK);
+                    Robot.IM.update();
+                    time = Timer.getFPGATimestamp();
                     setState(INPUT);
                 } else {
                     Robot.IM.setState(IntakeManager.PASS);
+                    Robot.IM.update();
                     setState(INPUT);
                 }
                 break;

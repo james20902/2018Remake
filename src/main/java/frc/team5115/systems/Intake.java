@@ -58,8 +58,8 @@ public class Intake {
 		return !cubeDetectorL.get() && !cubeDetectorR.get();
 	}
 	public void intake(double dir){
-		intakeWheelsLeft.set(-dir);
-		intakeWheelsRight.set(dir * 1.5);
+		intakeWheelsLeft.set(/*-dir*/ -0.5);
+		intakeWheelsRight.set(/*dir * 0.9*/ 0.75);
 	}
 	public void bump(){
 		intakeWheelsRight.set(-0.1);

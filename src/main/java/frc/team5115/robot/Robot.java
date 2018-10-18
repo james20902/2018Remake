@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
     public static ElevatorManager EM;
     public static CubeManipulator CM;
     public static IntakeManager IM;
+    public static GripManager GM;
     public static SendableChooser positionChooser;
     public static SendableChooser strategyChooser;
     public static SendableChooser colorTarget;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
         IM = new IntakeManager();
         EM = new ElevatorManager();
         CM = new CubeManipulator();
+        GM = new GripManager();
         DS = DriverStation.getInstance();
 
         positionChooser = new SendableChooser();
@@ -67,12 +69,13 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Drive Controller", CM.driveSpeed);
         //SmartDashboard.putNumber("Arm Controller", CM.armSpeed);
 
-        colorTarget = new SendableChooser();
-        colorTarget.addDefault("Red", "red");
-        colorTarget.addObject("Blue", "blue");
-
-        udpclient = new UDPClient("10.51.15.30", 5803);
-        udpclient.start();
+        //test for bunnybots
+//        colorTarget = new SendableChooser();
+//        colorTarget.addDefault("Red", "red");
+//        colorTarget.addObject("Blue", "blue");
+//
+//        udpclient = new UDPClient("10.51.15.30", 5803);
+//        udpclient.start();
 
         SmartDashboard.putNumber("P line", kpline);
         SmartDashboard.putNumber("I line", kiline);

@@ -18,6 +18,10 @@ public class UHOH extends StateMachineBase {
 
     AutoDrive drive;
 
+    public UHOH(){
+        drive = new AutoDrive();
+    }
+
     protected void updateChildren() {
         drive.update();
         Robot.EM.update();

@@ -63,9 +63,7 @@ public class AutoDrive extends StateMachineBase {
             case DRIVING:
                 Robot.drivetrain.inuse = true;
 
-                // run every Constants.getAsDouble()DELAY seconds while driving
                 double vForward = forwardController.getPID(targetDist, Robot.drivetrain.distanceTraveled(), Robot.drivetrain.averageSpeed());
-
                 double clearYaw = clearSteer(Robot.drivetrain.getYaw(), targetAngle);
                 double vTurn = turnController.getPID(targetAngle, clearYaw, Robot.drivetrain.getTurnVelocity());
 

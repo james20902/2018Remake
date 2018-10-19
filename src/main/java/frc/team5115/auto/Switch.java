@@ -27,6 +27,10 @@ public class Switch extends StateMachineBase {
 
     AutoDrive drive;
 
+    public Switch(){
+        drive = new AutoDrive();
+    }
+
     protected void updateChildren() {
         drive.update();
         Robot.EM.update();

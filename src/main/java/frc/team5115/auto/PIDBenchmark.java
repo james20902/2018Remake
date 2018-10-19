@@ -1,5 +1,6 @@
 package frc.team5115.auto;
 
+import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.StateMachineBase;
 
 public class PIDBenchmark extends StateMachineBase {
@@ -9,7 +10,7 @@ public class PIDBenchmark extends StateMachineBase {
     public static final int TURN = 3;
     public static final int FINISH = 4;
 
-    AutoDrive drive;
+    AutoDrive drive = Robot.autodrive;
 
     public void update(){
         switch(state){

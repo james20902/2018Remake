@@ -27,6 +27,10 @@ public class Scale extends StateMachineBase {
 
     AutoDrive drive;
 
+    public Scale(){
+        drive = new AutoDrive();
+    }
+
     protected void updateChildren() {
         drive.update();
         Robot.EM.update();

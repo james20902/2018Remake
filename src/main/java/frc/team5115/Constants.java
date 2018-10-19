@@ -52,7 +52,7 @@ public class Constants {
 
     // DIFFERENT BETWEEN ROBOTS - DO NOT COPY
     public static final double RETURN_HEIGHT = 75;
-    public static final double INTAKE_HEIGHT = 160;
+    public static final double INTAKE_HEIGHT = 180;
     public static final double SWITCH_HEIGHT = 250;
     public static final double SCALE_HEIGHT = 800;
 

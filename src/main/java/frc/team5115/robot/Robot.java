@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
         GM = new GripManager();
         DS = DriverStation.getInstance();
 
+
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');

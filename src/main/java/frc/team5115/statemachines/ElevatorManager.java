@@ -8,7 +8,7 @@ public class ElevatorManager extends StateMachineBase {
 
     public static final int MOVING = 1;
 
-    double targetAngle;
+    double targetAngle = Constants.ELEVATOR_MIN;
     double dAngle;
     double angle;
     PID elevatorMover;

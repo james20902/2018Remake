@@ -17,7 +17,6 @@ public class CubeManipulator extends StateMachineBase {
     public static final int DROP = 8;
     public static final int RELEASE = 9;
     public static final int PARTYTIME = 10;
-    public static final int CORRECT = 11;
 
     public double armGoal;
 
@@ -78,9 +77,6 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.drop()){
                     setState(DROP);
                 }
-                if (InputManager.correct()){
-                    setState(CORRECT);
-                }
                 if (InputManager.eject()){
                     setState(RELEASE);
                 }
@@ -97,8 +93,8 @@ public class CubeManipulator extends StateMachineBase {
 
                 //move the arm (execute move case)
                 updateChildren();
-                //every loop, check if the button is being held down
-                if(InputManager.moveUp()) {
+                //every loop, check if the button is being held down AND we arent already max height
+                if(InputManager.moveUp() && !Robot.elevator.maxHeight()) {
                     //if it is, add to the target
                     armGoal = Robot.elevator.getAngle() + Constants.ELEVATOR_STEP;
                 } else {
@@ -109,7 +105,7 @@ public class CubeManipulator extends StateMachineBase {
             case ARMDOWN:
                 Robot.EM.setTarget(armGoal);
                 updateChildren();
-                if(InputManager.moveDown()) {
+                if(InputManager.moveDown() && !Robot.elevator.minHeight()) {
                     armGoal = Robot.elevator.getAngle() - Constants.ELEVATOR_STEP;
                 } else {
                     setState(INPUT);
@@ -129,12 +125,16 @@ public class CubeManipulator extends StateMachineBase {
                 break;
             case INTAKE:
                 if (InputManager.intake()){
-                    Robot.IM.setState(IntakeManager.INTAKE);
+                    if (InputManager.correct()){
+                        Robot.IM.setState(IntakeManager.CORRECT);
+                    } else {
+                        Robot.IM.setState(IntakeManager.INTAKE);
+                    }
                     Robot.IM.update();
                 } else if (!InputManager.intake() && Robot.elevator.minHeight()){
                     Robot.GM.setState(GripManager.RELEASE);
-                    Robot.IM.setState(IntakeManager.PASS);
                     Robot.GM.setState(GripManager.STARTCLOCK);
+                    Robot.IM.setState(IntakeManager.PASS);
                     setState(INPUT);
                 } else {
                     Robot.IM.setState(IntakeManager.PASS);
@@ -154,20 +154,6 @@ public class CubeManipulator extends StateMachineBase {
                     Robot.drive.setState(Drive.PARTYTIME);
                 } else {
                     Robot.drive.setState(Drive.DRIVING);
-                    setState(INPUT);
-                }
-                break;
-            case CORRECT:
-                if (InputManager.correct()){
-                    Robot.IM.setState(IntakeManager.CORRECT);
-                    Robot.IM.update();
-                } else if (!InputManager.intake() && Robot.elevator.minHeight()){
-                    Robot.GM.setState(GripManager.RELEASE);
-                    Robot.IM.setState(IntakeManager.PASS);
-                    Robot.GM.setState(GripManager.STARTCLOCK);
-                    setState(INPUT);
-                } else {
-                    Robot.IM.setState(IntakeManager.PASS);
                     setState(INPUT);
                 }
                 break;

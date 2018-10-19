@@ -132,7 +132,6 @@ public class CubeManipulator extends StateMachineBase {
                     }
                     Robot.IM.update();
                 } else if (!InputManager.intake() && Robot.elevator.minHeight()){
-                    Robot.GM.setState(GripManager.RELEASE);
                     Robot.GM.setState(GripManager.STARTCLOCK);
                     Robot.IM.setState(IntakeManager.PASS);
                     setState(INPUT);

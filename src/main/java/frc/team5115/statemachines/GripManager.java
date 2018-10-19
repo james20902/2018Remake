@@ -18,6 +18,7 @@ public class GripManager extends StateMachineBase {
                 Robot.grip.stop();
                 break;
             case STARTCLOCK:
+                Robot.grip.release();
                 time = Timer.getFPGATimestamp();
                 setState(INTAKEDELAY);
                 break;

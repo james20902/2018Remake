@@ -125,19 +125,18 @@
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/710cfc4ed3f9eb122c4b1a4bbc8d6c6e965ffb73/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
         <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/e656f7b9e5af500b36bc756ad79e20cb4c3cde4f/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/710cfc4ed3f9eb122c4b1a4bbc8d6c6e965ffb73/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Gradle: com.snobot.simulator:ctre_sim_override:V0_5.1.2.1">
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/b1a636f341f1e3adbf19a1fdafd9c3d2f30897cb/ctre_sim_override-V0_5.1.2.1.jar!/" />
         <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/32ec18fffa90ca94e7b5b1ffe1dd8128ed7b7db1/ctre_sim_override-V0_5.1.2.1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/710cfc4ed3f9eb122c4b1a4bbc8d6c6e965ffb73/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
         <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/e656f7b9e5af500b36bc756ad79e20cb4c3cde4f/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.snobot.simulator/ctre_sim_override/V0_5.1.2.1/710cfc4ed3f9eb122c4b1a4bbc8d6c6e965ffb73/ctre_sim_override-V0_5.1.2.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Gradle: com.snobot.simulator:navx_simulator:2018-1.0.0">
@@ -377,13 +376,6 @@
       <SOURCES>
         <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opencv/opencv-java/3.2.0/da5215ba2c023701a644802a1fcd93749061f90d/opencv-java-3.2.0-sources.jar!/" />
       </SOURCES>
-    </library>
-    <library name="Gradle: org.opencv:opencv-jni:+">
-      <CLASSES>
-        <root url="file://$PROJECT_DIR$/Could not resolve org.opencv:opencv-jni:+." />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
     </library>
     <library name="Gradle: org.opencv:opencv-jni:all:3.2.0">
       <CLASSES>

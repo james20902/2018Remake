@@ -17,6 +17,7 @@ public class UHOH extends StateMachineBase {
     public static final int FINISHED = 2;
 
     AutoDrive drive;
+    double time;
 
     public UHOH(){
         drive = new AutoDrive();
@@ -35,13 +36,13 @@ public class UHOH extends StateMachineBase {
                 Robot.EM.setState(ElevatorManager.STOP);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 Robot.GM.setState(GripManager.GRIP);
-                drive.startLine(11.6, 0.75, false);
+                Robot.drivetrain.drive(0.5, 0);
+                time = Timer.getFPGATimestamp();
                 setState(DRIVING);
                 break;
             case DRIVING:
                 updateChildren();
-                if(drive.state == AutoDrive.FINISHED) {
-                    drive.setState(drive.STOP);
+                if(Timer.getFPGATimestamp() >= time + 0.7){
                     setState(FINISHED);
                 }
                 break;

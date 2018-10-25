@@ -9,15 +9,15 @@ public class Constants {
     public static final int JOYSTICK_EXPO = 2;
 
     //Actual Button Binds
-    public static final int UP = 4;
-    public static final int DOWN = 2;
+    public static final int UP = 5;
+    public static final int DOWN = 6;
     public static final int INTAKE = 9;
     public static final int DROP = 10;
     public static final int RELEASEGRIP = 1;
     public static final int SWITCHMODES = 12;
-    public static final int PARTYTIME = 5;
+    public static final int PARTYTIME = 7;
     public static final int CORRECTCUBE = 3;
-
+// XD
     //PID
     public static final double AUTO_FORWARD_KP = 0.4;
     public static final double AUTO_FORWARD_KI = 0;
@@ -32,7 +32,7 @@ public class Constants {
     public static final double ARM_KD = 0.02;
     public static final double DELAY = 0.005;
     // Tolerances for PID
-    public static final double FORWARD_TOLERANCE = 0.25;
+    public static final double FORWARD_TOLERANCE = 0.15;
     public static final double FORWARD_DTOLERANCE = 0.05;
     public static final double TURN_TOLERANCE = 5;
     public static final double TURN_DTOLERANCE = 15;
@@ -52,7 +52,7 @@ public class Constants {
 
     // DIFFERENT BETWEEN ROBOTS - DO NOT COPY
     public static final double RETURN_HEIGHT = 75;
-    public static final double INTAKE_HEIGHT = 180;
+    public static final double INTAKE_HEIGHT = 210;
     public static final double SWITCH_HEIGHT = 250;
     public static final double SCALE_HEIGHT = 800;
 

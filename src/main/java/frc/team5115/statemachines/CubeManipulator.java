@@ -127,6 +127,8 @@ public class CubeManipulator extends StateMachineBase {
                 if (InputManager.intake()){
                     if (InputManager.correct()){
                         Robot.IM.setState(IntakeManager.CORRECT);
+                    } else if(InputManager.eject()) {
+                        Robot.IM.setState(IntakeManager.SPIT);
                     } else {
                         Robot.IM.setState(IntakeManager.INTAKE);
                     }

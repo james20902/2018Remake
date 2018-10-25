@@ -23,7 +23,7 @@ public class GripManager extends StateMachineBase {
                 setState(INTAKEDELAY);
                 break;
             case INTAKEDELAY:
-                if(Timer.getFPGATimestamp() >= time + 0.7){
+                if(Timer.getFPGATimestamp() >= time + 1){
                     setState(GRIP);
                 }
                 break;

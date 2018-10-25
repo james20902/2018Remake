@@ -19,7 +19,7 @@ public class DriveTrain {
     //define gyroscope object
     AHRS navx;
 
-    public int direction;
+    public int direction = 1;
 
     public DriveTrain(){
         //instantiate the things
@@ -67,7 +67,7 @@ public class DriveTrain {
     }
 
     public double distanceTraveled() {
-        return (rightDist() + leftDist()) / 2;
+        return rightDist();
     }
 
     public double leftSpeed() {
@@ -81,9 +81,15 @@ public class DriveTrain {
         return ((rightspeed * 6 * Math.PI * 10) / (1440 * 12));
     }
 
+    public double leftRaw(){
+        return backleft.getSelectedSensorPosition(0);
+    }
+    public double rightRaw(){
+        return backright.getSelectedSensorPosition(0);
+    }
 
     public double averageSpeed() {
-        return (leftSpeed() + rightSpeed()) / 2;
+        return rightSpeed();
     }
     public double getYaw() {
         return navx.getYaw();

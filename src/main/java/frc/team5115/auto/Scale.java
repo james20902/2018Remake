@@ -38,6 +38,11 @@ public class Scale extends StateMachineBase {
         Robot.GM.update();
     }
 
+    public void resetEverything(){
+        Robot.drivetrain.resetGyro();
+        Robot.drivetrain.resetEncoders();
+    }
+
     public void update(){
         switch(state) {
             case INIT:
@@ -61,6 +66,7 @@ public class Scale extends StateMachineBase {
             case DRIVING:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED){
+                    resetEverything();
                     if(scale) {
                         if (Robot.OP.scalepos == 'R') {
                             drive.startTurn(-30, .5, false);
@@ -90,6 +96,7 @@ public class Scale extends StateMachineBase {
             case TURNING:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED){
+                    resetEverything();
                     Robot.EM.setState(ElevatorManager.MOVING);
                     Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
                     if(scale){
@@ -112,18 +119,18 @@ public class Scale extends StateMachineBase {
             case DRIVEAGAIN:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED){
+                    resetEverything();
                     if(center){
                         if(Robot.OP.switchpos == 'R') {
-                            drive.startTurn(45, 0.5, false);
+                            drive.startTurn(-45, 0.5, false);
                         }
                         else {
-                            drive.startTurn(-45, 0.5, false);
+                            drive.startTurn(45, 0.5, false);
                         }
                         setState(CENTERISNTDONEYET);
                     } else { //if we did anything from the side, we're done.
-                        drive.setState(drive.STOP);
+                        drive.setState(drive.FINISHED);
                         Robot.EM.setState(ElevatorManager.STOP);
-                        Robot.grip.release();
                         setState(FINISHED);
                     }
                 }
@@ -131,19 +138,21 @@ public class Scale extends StateMachineBase {
             case CENTERISNTDONEYET:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED) {
+                    resetEverything();
                     drive.startLine(4, 0.25, false);
+                    setState(STILLISNTDONEYET);
                 }
                 break;
             case STILLISNTDONEYET:
                 updateChildren();
                 if(drive.state == AutoDrive.FINISHED){
-                    drive.setState(drive.STOP);
-                    Robot.EM.setState(ElevatorManager.STOP);
-                    Robot.GM.setState(GripManager.GRIP);
                     setState(FINISHED);
                 }
                 break;
             case FINISHED:
+                drive.setState(drive.FINISHED);
+                Robot.EM.setState(ElevatorManager.STOP);
+                Robot.GM.setState(GripManager.RELEASE);
                 updateChildren();
                 break;
 

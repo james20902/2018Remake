@@ -1,5 +1,6 @@
 package frc.team5115.auto;
 
+import frc.team5115.robot.Robot;
 import frc.team5115.statemachines.StateMachineBase;
 
 public class Auto extends StateMachineBase{
@@ -43,6 +44,8 @@ public class Auto extends StateMachineBase{
         //Run switch block and check for number
         switch (state) {
             case INIT:
+                Robot.drivetrain.resetEncoders();
+                Robot.drivetrain.resetGyro();
                 setState(whatitdo);
                 break;
             case SWITCH:

@@ -53,7 +53,6 @@ public class Robot extends TimedRobot {
         GM = new GripManager();
         DS = DriverStation.getInstance();
 
-
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
         positionChooser.addObject("Right", 'R');
@@ -85,6 +84,7 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("P turn", kpturn);
         SmartDashboard.putNumber("I turn", kiturn);
         SmartDashboard.putNumber("D turn", kdturn);
+
     }
 
     public void autonomousInit(){
@@ -111,7 +111,13 @@ public class Robot extends TimedRobot {
     }
 
 
-    public void autonomousPeriodic(){ /*do this every 5ms*/auto.update(); System.out.println("autoing"); }
+    public void autonomousPeriodic(){ 
+        auto.update();
+    System.out.println("autoing");
+    System.out.println("Left dist " + drivetrain.leftDist() + " Right dist " + drivetrain.rightDist());
+    SmartDashboard.putNumber("right side", drivetrain.rightRaw());
+    SmartDashboard.putNumber("left side", drivetrain.leftRaw());
+    }
     public void teleopPeriodic() {
         //collect input every 5ms
         drive.update();

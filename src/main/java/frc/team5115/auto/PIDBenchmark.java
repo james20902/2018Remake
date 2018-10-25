@@ -10,7 +10,12 @@ public class PIDBenchmark extends StateMachineBase {
     public static final int TURN = 3;
     public static final int FINISH = 4;
 
-    AutoDrive drive = Robot.autodrive;
+    AutoDrive drive;
+
+    public PIDBenchmark ()
+    {
+        drive = new AutoDrive();
+    }
 
     public void update(){
         switch(state){

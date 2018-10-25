@@ -37,6 +37,10 @@ public class Switch extends StateMachineBase {
         Robot.IM.update();
         Robot.GM.update();
     }
+    public void resetEverything(){
+        Robot.drivetrain.resetGyro();
+        Robot.drivetrain.resetEncoders();
+    }
 
     public void update(){
         switch(state) {
@@ -60,6 +64,7 @@ public class Switch extends StateMachineBase {
                 break;
             case DRIVING:
                 updateChildren();
+                System.out.println("driving");
                 if(drive.state == AutoDrive.FINISHED){
                     if(center){
                         if(Robot.OP.switchpos == 'R'){
@@ -81,7 +86,7 @@ public class Switch extends StateMachineBase {
                             drive.startTurn(30, .5, false);
                         }
                     } else {
-                        drive.setState(drive.STOP);
+                        drive.setState(drive.FINISHED);
                         Robot.EM.setState(ElevatorManager.STOP);
                         setState(FINISHED);
                     }
@@ -90,6 +95,8 @@ public class Switch extends StateMachineBase {
                 break;
             case TURNING:
                 updateChildren();
+                System.out.println("looking for angle...");
+                System.out.println(Robot.drivetrain.getYaw());
                 if(drive.state == AutoDrive.FINISHED){
                     Robot.EM.setState(ElevatorManager.MOVING);
                     Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
@@ -106,45 +113,52 @@ public class Switch extends StateMachineBase {
                         Robot.EM.setTarget(Constants.SCALE_HEIGHT);
                         drive.startLine(4, 0.25, false);
                     }
-                    time = Timer.getFPGATimestamp();
                     setState(DRIVEAGAIN);
                 }
                 break;
             case DRIVEAGAIN:
                 updateChildren();
+                System.out.println("driving forward again!");
                 if(drive.state == AutoDrive.FINISHED){
                     if(center){
                         if(Robot.OP.switchpos == 'R') {
-                            drive.startTurn(45, 0.5, false);
-                        }
-                        else {
                             drive.startTurn(-45, 0.5, false);
                         }
+                        else {
+                            drive.startTurn(45, 0.5, false);
+                        }
                         setState(CENTERISNTDONEYET);
+
                     } else { //if we did anything from the side, we're done.
                         drive.setState(drive.STOP);
                         Robot.EM.setState(ElevatorManager.STOP);
-                        Robot.grip.release();
                         setState(FINISHED);
                     }
                 }
                 break;
             case CENTERISNTDONEYET:
                 updateChildren();
+                System.out.println("turning again!");
+                System.out.println(Robot.drivetrain.getYaw());
                 if(drive.state == AutoDrive.FINISHED) {
                     drive.startLine(4, 0.25, false);
+                    time = Timer.getFPGATimestamp();
+                    setState(STILLISNTDONEYET);
                 }
                 break;
             case STILLISNTDONEYET:
                 updateChildren();
-                if(drive.state == AutoDrive.FINISHED){
-                    drive.setState(drive.STOP);
-                    Robot.EM.setState(ElevatorManager.STOP);
+                if(Timer.getFPGATimestamp() >= time + 4){
                     Robot.GM.setState(GripManager.RELEASE);
+                }
+                if(drive.state == AutoDrive.FINISHED){
                     setState(FINISHED);
                 }
                 break;
             case FINISHED:
+                drive.setState(drive.STOP);
+                Robot.EM.setState(ElevatorManager.STOP);
+                System.out.println("yay!");
                 updateChildren();
                 break;
 

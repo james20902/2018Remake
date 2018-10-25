@@ -56,6 +56,7 @@ public class AutoDrive extends StateMachineBase {
         setState(DRIVING);
     }
 
+
     public void update() {
         SmartDashboard.putNumber("autodrive state: ", state);
         System.out.println("autodrive target: " + targetDist);

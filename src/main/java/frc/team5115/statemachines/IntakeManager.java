@@ -13,6 +13,7 @@ public class IntakeManager extends StateMachineBase {
     public static final int OPEN = 5;
     public static final int CLOSE = 6;
     public static final int CORRECT = 7;
+    public static final int SPIT = 8;
 
 
     public void update(){
@@ -52,6 +53,11 @@ public class IntakeManager extends StateMachineBase {
             case CORRECT:
                 Robot.intake.relax();
                 Robot.intake.bump();
+                Robot.intake.lowerIntake();
+                break;
+            case SPIT:
+                Robot.intake.relax();
+                Robot.intake.intake(-Constants.INTAKE_SPEED);
                 Robot.intake.lowerIntake();
                 break;
 

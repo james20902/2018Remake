@@ -11,7 +11,7 @@ import frc.team5115.statemachines.StateMachineBase;
 import java.lang.reflect.Field;
 
 
-public class UHOH extends StateMachineBase {
+public class Switch_cheap extends StateMachineBase {
 
 
     public static final int INIT = 0;
@@ -21,7 +21,7 @@ public class UHOH extends StateMachineBase {
     AutoDrive drive;
     double time;
 
-    public UHOH(){
+    public Switch_cheap(){
         drive = new AutoDrive();
     }
 
@@ -41,38 +41,30 @@ public class UHOH extends StateMachineBase {
         switch(state) {
             case INIT:
                 System.out.println("cross line selected!");
-                Robot.EM.setState(ElevatorManager.STOP);
+                Robot.EM.setState(ElevatorManager.MOVING);
+                Robot.EM.setTarget(Constants.SWITCH_HEIGHT);
                 Robot.IM.setState(IntakeManager.PASSNOWHEELS);
                 Robot.GM.setState(GripManager.GRIP);
-                //Robot.drivetrain.drive(0.5, 0);
-                drive.startLine(11.6, 0.5, false);
-                //time = Timer.getFPGATimestamp();
+                drive.startLine(8, 0.5, false);
                 setState(DRIVING);
                 break;
             case DRIVING:
                 updateChildren();
-//                System.out.println(Robot.drivetrain.distanceTraveled());
-//                if(Robot.drivetrain.distanceTraveled() == 4){
-//                    resetEverything();
-//                    setState(FINISHED);
-//                }
-//                System.out.println();
-                //System.out.println(drive.targetDist);
-//                System.out.println((Robot.drivetrain.leftRaw() + Robot.drivetrain.rightRaw()) / 2);
-                //System.out.println(Robot.drivetrain.distanceTraveled());
-//                System.out.println("looking for time..." + (time + 1.5));
-//                System.out.println(Timer.getFPGATimestamp());
-//                if(Timer.getFPGATimestamp() >= time + 1.5){
-//                    setState(FINISHED);
-//                    System.out.println("time found!");
-//                }
                 if(drive.state == AutoDrive.FINISHED){
+                    if(Robot.OP.switchOurs()){
+                        time = Timer.getFPGATimestamp();
+                    } else {
+                        Robot.GM.setState(GripManager.GRIP);
+                    }
+                    drive.setState(drive.FINISHED);
                     setState(FINISHED);
                 }
-                    break;
+                break;
             case FINISHED:
-                //drive.setState(drive.FINISHED);
-                drive.setState(drive.STOP);
+                //Robot.drivetrain.drive(0,0);
+                if(Timer.getFPGATimestamp() >= time + 1){
+                    Robot.GM.setState(GripManager.RELEASE);
+                }
                 System.out.println("target hit!");
                 updateChildren();
                 break;

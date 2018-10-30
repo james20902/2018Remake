@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
     public static SendableChooser colorTarget;
     public static DriverStation DS;
     public static UDPClient udpclient;
+    public static CSVInterpreter autocsv;
 
     public static double kpline = 0;
     public static double kiline = 0;
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
         CM = new CubeManipulator();
         GM = new GripManager();
         DS = DriverStation.getInstance();
+        autocsv = new CSVInterpreter();
 
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
@@ -88,10 +90,11 @@ public class Robot extends TimedRobot {
     }
 
     public void autonomousInit(){
-        drivetrain.resetGyro();
-        drivetrain.resetEncoders();
-        OP = new ObjectivePositions((char)positionChooser.getSelected());
-        auto = new Auto((int)strategyChooser.getSelected());
+//        drivetrain.resetGyro();
+//        drivetrain.resetEncoders();
+//        OP = new ObjectivePositions((char)positionChooser.getSelected());
+//        auto = new Auto((int)strategyChooser.getSelected());
+        drive.setState(drive.AUTOFOLLOWER);
     }
     public void teleopInit() {
         //assume the robot just turned on, and the drivetrain is not in use
@@ -111,12 +114,9 @@ public class Robot extends TimedRobot {
     }
 
 
-    public void autonomousPeriodic(){ 
-        auto.update();
-    System.out.println("autoing");
-    System.out.println("Left dist " + drivetrain.leftDist() + " Right dist " + drivetrain.rightDist());
-    SmartDashboard.putNumber("right side", drivetrain.rightRaw());
-    SmartDashboard.putNumber("left side", drivetrain.leftRaw());
+    public void autonomousPeriodic(){
+        drive.update();
+        autocsv.nextLine();
     }
     public void teleopPeriodic() {
         //collect input every 5ms

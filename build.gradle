@@ -32,6 +32,7 @@ dependencies {
     compile navx()
 	compile pathfinder()
     compile openrio.powerup.matchData()
+	compile "com.opencsv:opencsv:4.0"
 	
 	testCompile snobotSimCompile()
     testCompile snobotSimJavaCompile()

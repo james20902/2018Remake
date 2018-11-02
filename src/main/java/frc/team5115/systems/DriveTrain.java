@@ -94,6 +94,9 @@ public class DriveTrain {
     public double getYaw() {
         return navx.getYaw();
     }
+    public double getPitch() {
+        return navx.getPitch();
+    }
     public double getTurnVelocity(){
         return navx.getRate();
     }

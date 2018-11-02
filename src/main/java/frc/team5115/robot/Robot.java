@@ -31,7 +31,6 @@ public class Robot extends TimedRobot {
     public static SendableChooser colorTarget;
     public static DriverStation DS;
     public static UDPClient udpclient;
-    public static CSVInterpreter autocsv;
 
     public static double kpline = 0;
     public static double kiline = 0;
@@ -40,6 +39,8 @@ public class Robot extends TimedRobot {
     public static double kpturn = 0;
     public static double kiturn = 0;
     public static double kdturn = 0;
+
+    public static boolean kiddiemode = false;
 
     public void robotInit() {
         //instantiate
@@ -53,7 +54,6 @@ public class Robot extends TimedRobot {
         CM = new CubeManipulator();
         GM = new GripManager();
         DS = DriverStation.getInstance();
-        autocsv = new CSVInterpreter();
 
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
@@ -87,14 +87,15 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("I turn", kiturn);
         SmartDashboard.putNumber("D turn", kdturn);
 
+        SmartDashboard.putBoolean("toggle kiddiemode", kiddiemode);
+
     }
 
     public void autonomousInit(){
-//        drivetrain.resetGyro();
-//        drivetrain.resetEncoders();
-//        OP = new ObjectivePositions((char)positionChooser.getSelected());
-//        auto = new Auto((int)strategyChooser.getSelected());
-        drive.setState(drive.AUTOFOLLOWER);
+        drivetrain.resetGyro();
+        drivetrain.resetEncoders();
+        OP = new ObjectivePositions((char)positionChooser.getSelected());
+        auto = new Auto((int)strategyChooser.getSelected());
     }
     public void teleopInit() {
         //assume the robot just turned on, and the drivetrain is not in use
@@ -103,9 +104,15 @@ public class Robot extends TimedRobot {
         drivetrain.resetEncoders();
 
         //allow our drivetrain and subsystems to accept controller input
-        drive.setState(Drive.DRIVING);
-        CM.setState(CubeManipulator.INPUT);
-        EM.setState(ElevatorManager.MOVING);
+        if(kiddiemode){
+            drive.setState(Drive.RESTRICTED);
+            CM.setState(CM.RESTRICTED);
+            EM.setState(EM.RESTRICTED);
+        } else {
+            drive.setState(Drive.DRIVING);
+            CM.setState(CubeManipulator.INPUT);
+            EM.setState(ElevatorManager.MOVING);
+        }
     }
     public void testInit(){
         drivetrain.resetGyro();
@@ -115,13 +122,15 @@ public class Robot extends TimedRobot {
 
 
     public void autonomousPeriodic(){
-        drive.update();
-        autocsv.nextLine();
+        auto.update();
     }
     public void teleopPeriodic() {
         //collect input every 5ms
         drive.update();
         CM.update();
+        if(InputManager.killkey1() && InputManager.killkey2()){
+            int whoops = 1/0;
+        }
     }
     public void testPeriodic(){
 //        Robot.IM.update();
@@ -145,7 +154,7 @@ public class Robot extends TimedRobot {
         drivetrain.drive(0,0);
         EM.setState(CubeManipulator.STOP);
         IM.setState(IntakeManager.STOP);
-        grip.stop();
+        GM.setState(GripManager.STOP);
 
     }
 

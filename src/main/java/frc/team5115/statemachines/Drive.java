@@ -7,8 +7,8 @@ import frc.team5115.robot.Robot;
 public class Drive extends StateMachineBase {
 
     public static final int DRIVING = 1;
-    public static final int AUTOFOLLOWER = 2;
-    public static final int PARTYTIME = 3;
+    public static final int PARTYTIME = 2;
+    public static final int RESTRICTED = 3;
 
     double forwardSpeed;
     double turnSpeed;
@@ -30,18 +30,15 @@ public class Drive extends StateMachineBase {
                 Robot.drivetrain.drive(forwardSpeed, turnSpeed);
                 break;
 
-            case AUTOFOLLOWER:
-                if(Robot.autocsv.isFinished()){
-                    setState(STOP);
-                } else {
-                    Robot.drivetrain.drive(Robot.autocsv.getX(), Robot.autocsv.getY());
-                }
-                break;
-
             case PARTYTIME:
                 Robot.drivetrain.drive(1, 1);
                 break;
 
+            case RESTRICTED:
+                forwardSpeed = InputManager.getForward() * 0.75;
+                turnSpeed = InputManager.getTurn() * 0.75;
+                Robot.drivetrain.drive(forwardSpeed, turnSpeed);
+                break;
         }
     }
 

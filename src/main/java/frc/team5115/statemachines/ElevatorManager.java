@@ -7,16 +7,23 @@ import frc.team5115.robot.Robot;
 public class ElevatorManager extends StateMachineBase {
 
     public static final int MOVING = 1;
+    public static final int RESTRICTED = 2;
 
     double targetAngle = Constants.ELEVATOR_MIN;
     double dAngle;
     double angle;
     PID elevatorMover;
+    PID elevatorMoverRestricted;
+
     public ElevatorManager(){
         elevatorMover = new PID( Constants.ARM_KP,	//readability!
                 Constants.ARM_KI,	//because this line was too thicc
                 Constants.ARM_KD,
                 Constants.ELEVATOR_SPEED_SCALE);
+        elevatorMoverRestricted = new PID( Constants.ARM_KP,	//readability!
+                Constants.ARM_KI,	//because this line was too thicc
+                Constants.ARM_KD,
+                0.75);
     }
 
 
@@ -71,6 +78,11 @@ public class ElevatorManager extends StateMachineBase {
                 collisionAvoidance();
                 //then move the arm and calculate how far it needs to move
                 Robot.elevator.move(elevatorMover.getPID(targetAngle, angle, dAngle));
+                break;
+
+            case RESTRICTED:
+                collisionAvoidance();
+                Robot.elevator.move(elevatorMoverRestricted.getPID(targetAngle, angle, dAngle));
                 break;
         }
     }

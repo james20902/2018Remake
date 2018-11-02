@@ -17,6 +17,8 @@ public class Constants {
     public static final int SWITCHMODES = 12;
     public static final int PARTYTIME = 7;
     public static final int CORRECTCUBE = 3;
+    public static final int KILL1 = 13;
+    public static final int KILL2 = 14;
 // XD
     //PID
     public static final double AUTO_FORWARD_KP = 0.4;

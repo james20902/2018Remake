@@ -17,6 +17,7 @@ public class CubeManipulator extends StateMachineBase {
     public static final int DROP = 8;
     public static final int RELEASE = 9;
     public static final int PARTYTIME = 10;
+    public static final int RESTRICTED = 11;
 
     public double armGoal;
 
@@ -85,6 +86,26 @@ public class CubeManipulator extends StateMachineBase {
                 }
                 if(InputManager.partyTime() && Robot.DS.getMatchTime() > 135) {
                     setState(PARTYTIME);
+                }
+                break;
+            case RESTRICTED:
+                armGoal = Robot.elevator.getAngle();
+                if (Robot.elevator.minHeight()) {
+                    Robot.IM.setState(IntakeManager.PASS);
+                } else {
+                    Robot.IM.setState(IntakeManager.PASSNOWHEELS);
+                }
+                if (InputManager.intake()){
+                    setState(INTAKE);
+                }
+                if (InputManager.drop()){
+                    setState(DROP);
+                }
+                if (InputManager.scaleHeight()) {
+                    setState(ARMSCALE);
+                }
+                if (InputManager.returnHeight()) {
+                    setState(ARMHOME);
                 }
                 break;
             case ARMUP:

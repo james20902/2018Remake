@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
     public static SendableChooser colorTarget;
     public static DriverStation DS;
     public static UDPClient udpclient;
+    public static EBREAK ebreak;
 
     public static double kpline = 0;
     public static double kiline = 0;
@@ -54,6 +55,7 @@ public class Robot extends TimedRobot {
         CM = new CubeManipulator();
         GM = new GripManager();
         DS = DriverStation.getInstance();
+        ebreak = new EBREAK();
 
         positionChooser = new SendableChooser();
         positionChooser.addDefault("Left", 'L');
@@ -129,7 +131,8 @@ public class Robot extends TimedRobot {
         drive.update();
         CM.update();
         if(InputManager.killkey1() && InputManager.killkey2()){
-            int whoops = 1/0;
+            CM.setState(CubeManipulator.STOP);
+            drive.setState(Drive.EBREAK);
         }
     }
     public void testPeriodic(){

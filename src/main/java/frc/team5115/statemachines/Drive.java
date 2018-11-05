@@ -9,7 +9,7 @@ public class Drive extends StateMachineBase {
     public static final int DRIVING = 1;
     public static final int PARTYTIME = 2;
     public static final int RESTRICTED = 3;
-    public static final int YEET = 4;
+    public static final int EBREAK = 4;
 
     double forwardSpeed;
     double turnSpeed;
@@ -21,9 +21,6 @@ public class Drive extends StateMachineBase {
                 break;
 
             case DRIVING:
-                if(Robot.drivetrain.getPitch() > -15){
-                    setState(YEET);
-                }
                 if(Robot.CM.dashControl){
                     forwardSpeed = InputManager.getForward() * InputManager.getThrottle() * Robot.CM.driveSpeed;
                     turnSpeed = InputManager.getTurn() * InputManager.getThrottle() * Robot.CM.driveSpeed;
@@ -43,11 +40,8 @@ public class Drive extends StateMachineBase {
                 turnSpeed = InputManager.getTurn() * 0.75;
                 Robot.drivetrain.drive(forwardSpeed, turnSpeed);
                 break;
-            case YEET:
-                if(Robot.drivetrain.getPitch() < -2.5){
-                    setState(DRIVING);
-                }
-                Robot.drivetrain.drive(-(Robot.drivetrain.getPitch() / -15), 0);
+            case EBREAK:
+                Robot.ebreak.update();
                 break;
         }
     }

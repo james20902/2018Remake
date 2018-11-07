@@ -4,7 +4,6 @@ import com.ctre.phoenix.ParamEnum;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team5115.Constants;
 import frc.team5115.commands.Elevator.ElevatorRest;
@@ -16,7 +15,6 @@ public class Elevator extends Subsystem {
     public boolean movingArm = false;
     TalonSRX armMover;
 
-    Command rest;
 
     public Elevator(){
         armMover = new TalonSRX(Constants.ELEVATORMOVER);
@@ -27,7 +25,7 @@ public class Elevator extends Subsystem {
     }
 
     public void initDefaultCommand(){
-        rest = new ElevatorRest();
+        new ElevatorRest();
     }
     public double getAngle(){
         return armMover.getSelectedSensorPosition(0);

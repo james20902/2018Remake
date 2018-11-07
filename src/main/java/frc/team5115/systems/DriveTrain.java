@@ -24,8 +24,6 @@ public class DriveTrain extends Subsystem {
 
     public int direction = 1;
 
-    Command drive;
-
     public DriveTrain(){
         //instantiate the things
         navx = new AHRS(SPI.Port.kMXP);
@@ -45,7 +43,7 @@ public class DriveTrain extends Subsystem {
     }
 
     public void initDefaultCommand(){
-        drive = new Drive();
+        new Drive();
     }
 
     public void drive(double speed, double turn){

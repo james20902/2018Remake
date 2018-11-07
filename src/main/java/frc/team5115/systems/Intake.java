@@ -3,10 +3,9 @@ package frc.team5115.systems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team5115.Constants;
-import frc.team5115.commands.Intake.Correct;
+import frc.team5115.commands.Intake.Avoid;
 
 
 public class Intake extends Subsystem {
@@ -20,8 +19,6 @@ public class Intake extends Subsystem {
 	public Spark intakeWheelsLeft;
 	public Spark intakeWheelsRight;
 
-	Command correct;
-
 	public Intake(){
 		cubeDetectorL = new DigitalInput(Constants.CUBE_DETECTOR_L);
 		cubeDetectorR = new DigitalInput(Constants.CUBE_DETECTOR_R);
@@ -34,10 +31,10 @@ public class Intake extends Subsystem {
 	}
 
 	public void initDefaultCommand(){
-		correct = new Correct();
+		new Avoid();
 	}
 
-	public void grip(){
+	public void close(){
 		System.out.println("grip");
 		cubeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
 		cubeSolenoidRight.set(DoubleSolenoid.Value.kForward);
@@ -48,7 +45,7 @@ public class Intake extends Subsystem {
 		cubeSolenoidLeft.set(DoubleSolenoid.Value.kOff);
 		cubeSolenoidRight.set(DoubleSolenoid.Value.kOff);
 	}
-	public void release(){
+	public void open(){
 		System.out.println("release");
 		cubeSolenoidLeft.set(DoubleSolenoid.Value.kReverse);
 		cubeSolenoidRight.set(DoubleSolenoid.Value.kReverse);

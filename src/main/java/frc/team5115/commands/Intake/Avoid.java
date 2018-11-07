@@ -1,10 +1,10 @@
 package frc.team5115.commands.Intake;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.team5115.Constants;
 import frc.team5115.robot.Robot;
 
-public class Avoid extends Command {
+public class Avoid extends CommandGroup {
 
     public Avoid(){
         requires(Robot.intake);
@@ -12,15 +12,15 @@ public class Avoid extends Command {
 
     protected void execute(){
         if (Robot.elevator.minHeight() && !Robot.elevator.movingArm) {
-            //pass
+            new Pass();
         } else if ((Robot.elevator.getAngle() <= Constants.INTAKE_HEIGHT)) {
-            //open
+            new Open();
         } else {
-            //close
+            new Close();
         }
     }
 
     protected boolean isFinished(){
-        return true;
+        return false;
     }
 }

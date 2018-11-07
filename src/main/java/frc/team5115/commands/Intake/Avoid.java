@@ -1,10 +1,10 @@
 package frc.team5115.commands.Intake;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.team5115.Constants;
 import frc.team5115.robot.Robot;
 
-public class Avoid extends CommandGroup {
+public class Avoid extends Command {
 
     public Avoid(){
         requires(Robot.intake);

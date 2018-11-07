@@ -14,6 +14,6 @@ public class Pass extends Command {
         Robot.intake.liftIntake();
     }
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 }

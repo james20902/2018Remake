@@ -1,7 +1,13 @@
 package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team5115.Constants;
+import frc.team5115.commands.Intake.*;
+import frc.team5115.commands.Elevator.*;
+import frc.team5115.commands.Grip.*;
+import frc.team5115.commands.*;
 
 public class InputManager {
 
@@ -13,6 +19,20 @@ public class InputManager {
      */
     //define and instantiate our joystick object
     static Joystick joy = new Joystick(0);
+    Button intake = new JoystickButton(joy, Constants.INTAKE),
+            eject = new JoystickButton(joy, Constants.RELEASEGRIP),
+            correct = new JoystickButton(joy, Constants.CORRECTCUBE),
+            moveUp = new JoystickButton(joy, Constants.UP),
+            moveDown = new JoystickButton(joy, Constants.DOWN);
+
+    public InputManager(){
+        intake.whenPressed(new Intake());
+        intake.whenReleased(new IntakeAndGrip());
+        eject.whenPressed(new Release());
+        correct.whenPressed(new Correct());
+        moveUp.whenPressed(new ElevatorStep(true));
+        moveDown.whenPressed(new ElevatorStep(false));
+    }
 
     //The following methods deal with the basic driving functionalities
     public static double getForward() {
@@ -64,31 +84,6 @@ public class InputManager {
         return getHat() == 180;
     }
 
-    public static boolean intake(){
-        return joy.getRawButton(Constants.INTAKE);
-    }
-
-    public static boolean eject(){
-        return joy.getRawButton(Constants.RELEASEGRIP);
-    }
-    public static boolean correct(){
-        return joy.getRawButton(Constants.CORRECTCUBE);
-    }
-    public static boolean drop(){
-        return joy.getRawButton(Constants.DROP);
-    }
-
-    public static boolean moveUp(){
-        return joy.getRawButton(Constants.UP);
-    }
-
-    public static boolean moveDown(){
-        return joy.getRawButton(Constants.DOWN);
-    }
-
-    public static boolean toggleDash(){return joy.getRawButton(Constants.SWITCHMODES);}
-
-    public static boolean partyTime(){return joy.getRawButton(Constants.PARTYTIME);}
 
     public static boolean killkey1(){return joy.getRawButton(Constants.KILL1);}
 

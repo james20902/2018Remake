@@ -15,6 +15,6 @@ public class Intake extends Command {
         Robot.intake.lowerIntake();
     }
     protected boolean isFinished() {
-        return !InputManager.intake();
+        return true;
     }
 }

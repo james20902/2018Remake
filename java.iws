@@ -2,31 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c151db14-fdc1-4b54-8361-bada799cbd44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commandbasedremake.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorRest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorStep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Avoid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/java.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandbasedremake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commandbasedremake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java.iws" beforeDir="false" afterPath="$PROJECT_DIR$/java.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Close.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Close.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Open.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Open.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Close.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Grip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Open.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Release.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Stop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Stop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Grip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Grip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Intake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Intake.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -93,33 +89,36 @@
     <session id="-1029802184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="24" />
+          <entry key="java" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="24" />
+          <entry key="JAVA" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="964" />
+          <entry key="dummy" value="20" />
+          <entry key="java" value="2593" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="964" />
+          <entry key="JAVA" value="2593" />
+          <entry key="PLAIN_TEXT" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -164,14 +163,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="68">
+              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="24" column="77" lean-forward="true" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -190,11 +207,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Grip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state relative-caret-position="102">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Release.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,32 +229,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/Constants.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/PID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorRest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="119">
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#261#262#0" expanded="true" />
-                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -238,9 +258,23 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorStep.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="704">
+              <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1478#1479#0" expanded="true" />
+                <element signature="e#1505#1506#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -254,6 +288,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Tolerance</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -552,7 +591,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3083194330412" />
+        <entry key="$PROJECT_DIR$" value="3083078963697" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
         <entry key="$PROJECT_DIR$/build.gradle" value="2701648324" />
       </map>
@@ -692,10 +731,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/robot/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Drive.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Intake.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/ElevatorRest.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java" />
@@ -704,13 +740,20 @@
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Close.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Open.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Stop.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorRest.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorStepUp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Open.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Stop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Avoid.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorStep.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java" />
       </list>
     </option>
   </component>
@@ -724,11 +767,11 @@
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="330" />
-    <option name="y" value="-35" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="137" />
+    <option name="y" value="11" />
     <option name="width" value="1394" />
-    <option name="height" value="965" />
+    <option name="height" value="968" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -744,36 +787,36 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -781,7 +824,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -790,7 +833,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -800,7 +843,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -810,7 +853,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -820,7 +863,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -829,7 +872,7 @@
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="commandbasedremake" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -840,7 +883,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -852,7 +894,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541607567114" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541634045664" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -930,24 +972,25 @@
       <workItem from="1541559391904" duration="1357000" />
       <workItem from="1541597337835" duration="1564000" />
       <workItem from="1541600397916" duration="1765000" />
+      <workItem from="1541620545465" duration="6397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7508000" />
+    <option name="totallyTimeSpent" value="13905000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="137" y="11" width="1394" height="968" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Build Variants" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27651006" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.52548724" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Build Variants" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -959,7 +1002,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.32907802" />
+      <window_info anchor="bottom" id="Build" order="11" weight="0.32851985" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -986,13 +1029,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/statemachines/CubeManipulator.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/auto.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/Scheduler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/Intake.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1004,13 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/Grip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1018,57 +1047,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#170#171#0" expanded="true" />
-            <element signature="e#206#207#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/PID.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="24" column="77" lean-forward="true" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+        <state relative-caret-position="582">
+          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Open.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="417">
+          <caret line="43" column="55" lean-forward="true" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#175#176#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Avoid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        <state relative-caret-position="391">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#164#165#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorRest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="153">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1076,7 +1122,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Stop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#172#173#0" expanded="true" />
@@ -1087,35 +1133,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Correct.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Spit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="238">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#216#217#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Close.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Pass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state relative-caret-position="238">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
-            <element signature="e#172#173#0" expanded="true" />
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#275#276#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/IntakeAndGrip.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="238">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorStep.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/InputManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="32" column="51" lean-forward="true" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1134,56 +1199,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Release.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Rest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Grip/Grip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/Elevator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="77" lean-forward="true" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/systems/DriveTrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/robot/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Intake/Intake.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorRest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/PID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/team5115/commands/Elevator/ElevatorMove.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

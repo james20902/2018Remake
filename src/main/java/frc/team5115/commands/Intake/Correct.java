@@ -14,6 +14,6 @@ public class Correct extends Command {
         Robot.intake.lowerIntake();
     }
     protected boolean isFinished() {
-        return !InputManager.correct();
+        return true;
     }
 }

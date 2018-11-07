@@ -11,7 +11,6 @@ public class Robot extends TimedRobot {
     public static Elevator elevator;
     public static Grip grip;
     public static Intake intake;
-    public static Drive drive;
 
     @Override
     public void robotInit() {
@@ -19,7 +18,6 @@ public class Robot extends TimedRobot {
         elevator = new Elevator();
         grip = new Grip();
         intake = new Intake();
-        drive = new Drive();
     }
 
     @Override

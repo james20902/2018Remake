@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team5115.robot.Robot;
 
 public class Stop extends Command {
+    public Stop(){
+        requires(Robot.intake);
+    }
     protected void execute() {
         Robot.intake.relax();
         Robot.intake.bump();

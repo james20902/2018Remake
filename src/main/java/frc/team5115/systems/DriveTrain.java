@@ -4,12 +4,15 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team5115.Constants;
 
 import edu.wpi.first.wpilibj.SPI;
+import frc.team5115.commands.Drive;
 
 
-public class DriveTrain {
+public class DriveTrain extends Subsystem {
     public boolean inuse;
     //define motor objects
     TalonSRX frontleft;
@@ -20,6 +23,8 @@ public class DriveTrain {
     AHRS navx;
 
     public int direction = 1;
+
+    Command drive;
 
     public DriveTrain(){
         //instantiate the things
@@ -37,6 +42,10 @@ public class DriveTrain {
         backright.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 5);
         backleft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 5);
 
+    }
+
+    public void initDefaultCommand(){
+        drive = new Drive();
     }
 
     public void drive(double speed, double turn){

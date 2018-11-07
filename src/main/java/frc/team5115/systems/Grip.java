@@ -1,14 +1,19 @@
 package frc.team5115.systems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team5115.Constants;
 
-public class Grip {
+public class Grip extends Subsystem {
     DoubleSolenoid grabberSolenoid;
 
 
     public Grip(){
         grabberSolenoid = new DoubleSolenoid(Constants.PNEUMATIC_PCM_1_ID, Constants.CARRIAGE_FORWARD_CHANNEL, Constants.CARRIAGE_REVERSE_CHANNEL);
+    }
+
+    public void initDefaultCommand(){
+        //this shouldnt default to anything
     }
 
     public void grip(){

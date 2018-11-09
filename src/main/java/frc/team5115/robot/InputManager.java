@@ -30,8 +30,8 @@ public class InputManager {
         intake.whenReleased(new IntakeAndGrip());
         eject.whenPressed(new Release());
         correct.whenPressed(new Correct());
-        moveUp.whenPressed(new ElevatorStep(true));
-        moveDown.whenPressed(new ElevatorStep(false));
+        moveUp.whenPressed(new MoveAndAvoid(true));
+        moveDown.whenPressed(new MoveAndAvoid(false));
     }
 
     //The following methods deal with the basic driving functionalities

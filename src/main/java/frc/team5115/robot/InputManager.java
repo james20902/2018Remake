@@ -26,12 +26,12 @@ public class InputManager {
             moveDown = new JoystickButton(joy, Constants.DOWN);
 
     public InputManager(){
-        intake.whenPressed(new Intake());
+        intake.whileHeld(new Intake());
         intake.whenReleased(new IntakeAndGrip());
-        eject.whenPressed(new Release());
-        correct.whenPressed(new Correct());
-        moveUp.whenPressed(new MoveAndAvoid(true));
-        moveDown.whenPressed(new MoveAndAvoid(false));
+        eject.whileHeld(new Release());
+        correct.whileHeld(new Correct());
+        moveUp.whileHeld(new MoveAndAvoid(true));
+        moveDown.whileHeld(new MoveAndAvoid(false));
     }
 
     //The following methods deal with the basic driving functionalities

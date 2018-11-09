@@ -1,8 +1,12 @@
 package frc.team5115.robot;
 
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.team5115.Constants;
+import frc.team5115.commands.Elevator.ElevatorMove;
+import frc.team5115.commands.MoveAndAvoid;
 import frc.team5115.systems.*;
 import edu.wpi.first.wpilibj.TimedRobot;
+import jdk.internal.util.xml.impl.Input;
 
 public class Robot extends TimedRobot {
 
@@ -30,6 +34,13 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         Scheduler.getInstance().run();
+        if(InputManager.switchHeight()){
+            new MoveAndAvoid(Constants.SWITCH_HEIGHT);
+        } else if(InputManager.scaleHeight()){
+            new MoveAndAvoid(Constants.SCALE_HEIGHT);
+        } else if(InputManager.returnHeight()){
+            new MoveAndAvoid(Constants.RETURN_HEIGHT);
+        }
     }
 
     @Override

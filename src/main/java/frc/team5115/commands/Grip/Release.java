@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team5115.robot.Robot;
 
 public class Release extends Command {
-    public void Open(){
+    public Release(){
         requires(Robot.grip);
     }
     protected void initialize() {
